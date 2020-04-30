@@ -1,0 +1,25 @@
+section{
+    text-align: center;
+}
+
+#content button{
+    margin-top : 10px;
+    margin-bottom: 10px;
+}
+
+.weight-area{
+
+}
+
+    .weight-area .sclae-img{
+        display: block; margin: 0px auto; 
+    }
+
+    .weight-area .weight-value{
+        margin-top:10px;
+    }
+
+    .weight-area .value{
+        font-size: 5em;
+        margin-bottom: 0px;
+    }

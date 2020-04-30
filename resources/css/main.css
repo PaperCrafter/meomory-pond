@@ -1,0 +1,48 @@
+.post-item{
+    color: black;
+    background-color: #ffffff;
+    margin-top: 10px;
+    color: #636363;
+    border-radius: 0.25em;
+    padding: 1em;
+}
+
+.post-item .post-title{
+    color: black;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.post-item .post-content{
+    max-height: 3rem;
+    overflow: hidden;
+    margin-bottom: 0px;
+}
+
+#page{
+    height: 30px;
+    font-size: 2em;
+}
+
+.page-list{
+    list-style: none;
+    display: block;
+    text-align: center;
+    cursor: default;
+    list-style: none;
+    padding-left: 0;
+}
+    .page-list li {
+        display: inline-block;
+        padding: 0 0.65em 0 0;
+    }
+
+        .page-list li:last-child {
+            padding-right: 0 !important;
+        }
+
+
+.page-index{
+    /* width: 2rem;
+    height: 2rem; */
+}

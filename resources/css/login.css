@@ -1,0 +1,32 @@
+form{
+    text-align: center;
+}
+
+form p{
+    font-weight: 200px;
+    margin-bottom: 20px;
+}
+
+form div{
+    margin-bottom:10px;
+}
+
+.subtitle{
+    top : -10px;
+}
+
+form .col-12{
+    margin-top: 20px;
+}
+
+form .col-12 .primary{
+    margin-bottom: 10px;
+}
+
+.to-main{
+    position: relative;
+    top : -15px;
+    float: right;
+    font-size: 12px;
+    text-decoration: none;
+}

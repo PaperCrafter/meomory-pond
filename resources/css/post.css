@@ -1,0 +1,34 @@
+.author{
+    float: right;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.content{
+    display: inline-block;
+}
+
+.comment-item{
+    background-color: #ffffff;
+    margin-top: 10px;
+    color: #636363;
+    border-radius: 0.25em;
+    padding: 1em;
+}
+
+.comment-item .content{
+margin-bottom: 0px;
+}
+
+
+.comment{
+    margin-top: 40px;
+}
+
+.comment-list{
+    list-style: none;
+}
+
+.comment textarea{
+    display: block;
+}
