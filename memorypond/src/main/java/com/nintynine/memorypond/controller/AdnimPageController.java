@@ -1,14 +1,16 @@
 package com.nintynine.memorypond.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/post")
-public class PostController {
+@RequestMapping("/admin")
+@RequiredArgsConstructor
+public class AdnimPageController {
     @GetMapping
-    public String getLoginPage(){
-        return "post";
+    public String getAminPage(){
+        return "admin";
     }
 }

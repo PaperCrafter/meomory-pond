@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/weight")
-public class WeightController {
+@RequestMapping("/login")
+public class LoginPageController {
     @GetMapping
-    public String getRegisterPage(){
-        return "weight";
+    public String getLoginPage(){
+        return "login";
     }
 }
