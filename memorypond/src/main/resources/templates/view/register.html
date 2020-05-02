@@ -25,18 +25,18 @@
                     <form>
                         <h3 class = "subtitle">회원가입</h3>
                         <div class="col-6 col-12-xsmall">
-                            <input type="text" name="demo-name" id="demo-name" value="" placeholder="닉네임" />
+                            <input type="text" name="username" id="username" value="" placeholder="닉네임(2~15자 사이)" />
                         </div>
                         <div class="col-6 col-12-xsmall">
-                            <input type="password" name="demo-email" id="demo-email" value="" placeholder="비밀번호" />
+                            <input type="password" name="password" id="password" value="" placeholder="비밀번호(5~15자 사이의 영문, 숫자 조합" />
                         </div>
                         <div class="col-6 col-12-xsmall">
-                            <input type="password" name="demo-email" id="demo-email" value="" placeholder="비밀번호 확인" />
+                            <input type="password" name="passwordConfirm" id="passwordConfirm" value="" placeholder="비밀번호 확인" />
                         </div>
                         <div class="alt error-message">
                         </div>
                         <div class="col-12">
-                            <input type="submit" value="회원가입" class="primary fit" />
+                            <input type="submit" value="회원가입" id = "btnSend" class="primary fit" />
                             <a href="/login" class="button fit">돌아가기</a>
                         </div>            
                     </form>
@@ -55,5 +55,6 @@
         <script src="../js/common/breakpoints.min.js"></script>
         <script src="../js/common/util.js"></script>
         <script src="../js/common/common.js"></script>
+        <script src="../js/register.js"></script>
 	</body>
 </html>

@@ -45,4 +45,12 @@ public class Member {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setCreateAt(String createAd){
+        this.createAt = createAd;
+    }
+
+    public void setUpdateAt(String updateAt){
+        this.updateAt = updateAt;
+    }
 }

@@ -27,23 +27,29 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http
                 .authorizeRequests()
-                    .antMatchers("/resigter/new").permitAll()
-                    .antMatchers("/register").permitAll()
-                    .antMatchers("/main").permitAll()
-                    .antMatchers("/login").permitAll()
-                    .antMatchers("/wellcome").permitAll()
-                    .antMatchers("/post").permitAll()
+                    .antMatchers("/api/**",
+                            "/register",
+                            "/main",
+                            "/login",
+                            "/wellcome",
+                            "/post"
+                            ).permitAll()
                     .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
                     .and()
                 .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/main")
+                    .loginProcessingUrl("/login")
+                    .defaultSuccessUrl("/main", true)
+                    .usernameParameter("username")
+                    .passwordParameter("password")
                     .permitAll()
                     .and()
                 .csrf()
                     .disable()
-                .logout();
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/main");
     }
 
     @Override
@@ -54,6 +60,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers("/templates/**", "/static/**", "/js/**", "/css/**", "/img/**");
+                .antMatchers("/templates/**",
+                        "/static/**",
+                        "/js/**",
+                        "/css/**",
+                        "/img/**");
     }
 }
