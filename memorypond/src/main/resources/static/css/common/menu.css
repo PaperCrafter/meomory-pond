@@ -44,8 +44,14 @@
     float: right;
 }
 
+.menu .post{
+    margin-right:0.5em;
+}
+
 .menu-title{
     transform:translate(0, 10%);
     display: inline-block;
     margin-bottom: 0px;
 }
+
+

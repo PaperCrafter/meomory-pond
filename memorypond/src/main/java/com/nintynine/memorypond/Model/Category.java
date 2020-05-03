@@ -1,5 +1,6 @@
 package com.nintynine.memorypond.Model;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
 @NoArgsConstructor
 public class Category {
     @Id
@@ -14,7 +16,4 @@ public class Category {
     int id;
 
     String categoryName;
-
-    @OneToMany(mappedBy="category")
-    private List<Question> questions = new ArrayList<Question>();
 }

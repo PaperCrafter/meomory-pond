@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<title>Memory Pond</title>
 		<meta charset="utf-8" />
@@ -15,8 +16,11 @@
 		<div class="menu">
 			<div class="menu-wrapper">
 				<h1 class="menu-title">Memory Pond</h1>
-				<a href="/login" class="button small">로그인</a>
-				<a href="/post" class="button small">글쓰기</a>
+				<a sec:authorize="isAuthenticated()" href="/logout" class="button small logout">로그아웃</a>
+				<a sec:authorize="isAuthenticated()" href="/question" class="button small post">글쓰기</a>
+				<a sec:authorize="isAnonymous()" th:href="@{/login}" href="/login" class="button small login">로그인</a>
+				<!-- <a href="/login" class="button small">로그인</a>
+				<a href="/post" class="button small">글쓰기</a> -->
 			</div>
 		</div>
 		<div id="wrapper">

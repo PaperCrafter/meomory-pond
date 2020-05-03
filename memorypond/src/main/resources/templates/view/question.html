@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<title>Memory Pond Wellcome</title>
 		<meta charset="utf-8" />
@@ -24,12 +25,29 @@
                             <div class="col-6 col-12-xsmall">
                                 <input type="text" name="name" id="name" value="" placeholder="고민제목" />
                             </div>
+                            <div class="col-12 category-wrapper">
+                                <p class="category-title"></p>
+                                <select name="category" id="category">
+                                    <option value="1">Manufacturing</option>
+                                </select>
+                            </div>
+                            <div id = "radio">
+                                <!-- <div class="col-4 col-12-small">
+                                    <input type="radio" name="title" checked>
+                                    <label>Low</label>
+                                </div> -->
+                            </div>
                             <div class="col-12">
-                                <textarea name="demo-message" id="demo-message" placeholder="고민내용" rows="6"></textarea>
+                                <textarea name="content" id="content" placeholder="고민내용(3글자 이상)" rows="6"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <p id="error-message"></p>
+                            </div>
+                            <div sec:authentication="principal.username" name="username" id="username" style="display:none;">
                             </div>
                             <div class="col-12">
                                 <ul class="actions">
-                                    <li><input type="submit" value="고민 남기기" class="primary" /></li>
+                                    <li><input type="submit" value="고민 남기기)" class="primary" id="send"/></li>
                                     <li><input type="reset" value="돌아가기" /></li>
                                 </ul>
                             </div>
@@ -47,6 +65,14 @@
         <script src="../js/common/browser.min.js"></script>
         <script src="../js/common/breakpoints.min.js"></script>
         <script src="../js/common/util.js"></script>
+        <script src="../js/question.js"></script>
         <script src="../js/common/common.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>
+		<script type="rv-template" id="radio_item">
+            <div class="col-4 col-12-small">
+                <input type="radio" name="radioText" value={{id}} checked>
+                <label>{{name}}</label>
+            </div>
+		</script>
 	</body>
 </html>

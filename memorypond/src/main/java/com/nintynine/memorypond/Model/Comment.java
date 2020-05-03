@@ -20,4 +20,8 @@ public class Comment {
     @ManyToOne(cascade={CascadeType.ALL})
     @JoinColumn
     private Post post;
+
+    private String createAt;
+
+    private String updateAt;
 }

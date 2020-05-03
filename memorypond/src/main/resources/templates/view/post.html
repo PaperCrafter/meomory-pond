@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<title>read post</title>
 		<meta charset="utf-8" />
@@ -43,7 +44,7 @@
 					</li>
 				</ul>
 			</section>
-			<section class="comment">
+			<section sec:authorize="isAuthenticated()" class="comment">
 				<p>뎃글 남기기</p>
 				<form method="post" action="#">
 					<div class="row gtr-uniform">
