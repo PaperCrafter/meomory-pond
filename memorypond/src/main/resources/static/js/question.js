@@ -80,6 +80,7 @@ PostForm.prototype = {
                 "username" : this.form.querySelector("#username").textContent,
                 "questionId" : radioVal
             }
+
             data = JSON.stringify(data);
             xhr.onload=function(){
                 if(xhr.status === 201){
@@ -88,14 +89,21 @@ PostForm.prototype = {
                     console.error(xhr.responseText);
                 }
             }
+
             var url = "/api/posts";
             xhr.open("POST", url);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(data);
         });
     },
-    activateBack:function(){
+    activateBack: function(){
 
+    },
+    isEmpty: function(item){
+        if(typeof item == "undefined" || item == null || item == "")
+            return true;
+        else
+            return false ;
     },
     validateForm: function(){
         var errorSection = this.form.querySelector("#error-message");
@@ -104,8 +112,8 @@ PostForm.prototype = {
             errorSection.textContent = "카테고리를 선택해 주세요";
             return false;
         }
-        var radioVal = $('input[name="radioTxt"]:checked').val();
-        if(radioVal < 1){
+        var radioVal = $('input[name="radioText"]:checked').val();
+        if(radioVal < 1 || this.isEmpty(radioVal)){
             errorSection.textContent = "올바른 주제를 선택해 주세요.";
             return false;
         }

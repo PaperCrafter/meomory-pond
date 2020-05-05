@@ -32,7 +32,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                             "/main",
                             "/login",
                             "/wellcome",
-                            "/post"
+                            "/post/**"
                             ).permitAll()
                     .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()

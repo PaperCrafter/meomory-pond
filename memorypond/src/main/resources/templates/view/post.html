@@ -27,25 +27,19 @@
 			<section>
 				<div id="main">
 					<section id="content" class="main">
-						<span class="image main"><img src="images/pic04.jpg" alt="" /></span>
-						<h2 class="title">고기만두가 너무 먹고싶어요</h2>
-						<p class="author">written By 서연</p>
-						<p class="content">고기 만두가 너무 먹고싶어요. 어떡하죠?</p>
+						<h2 class="title">Q. 고기만두가 너무 먹고싶어요</h2>
+						<p class="author"> written By 서연</p>
+						<p class="content">A. 고기 만두가 너무 먹고싶어요. 어떡하죠?</p>
 					</section>
 				</div>
 			</section>
-			<section class="coments-section">
+			<section class="comment-section">
 				<ul class="comment-list">
-					<li class="comment-item">
-						<div class="">
-							<p class="author">written By 종이</p>
-							<p class="content">저도 먹고싶어요!</p>
-						</div>
-					</li>
+
 				</ul>
 			</section>
 			<section sec:authorize="isAuthenticated()" class="comment">
-				<p>뎃글 남기기</p>
+				<p>덧글 남기기</p>
 				<form method="post" action="#">
 					<div class="row gtr-uniform">
 						<div class="col-12">
@@ -73,8 +67,13 @@
 		<script src="../js/post.js"></script>
 		<script src="../js/common/common.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>
-		<script type="rv-template" id="card_item">
-
+		<script type="rv-template" id="comment_item">
+			<li class="comment-item main">
+				<div class="">
+					<p class="author">written By 종이</p>
+					<p class="content">저도 먹고싶어요!</p>
+				</div>
+			</li>
 		</script>
 	</body>
 </html>

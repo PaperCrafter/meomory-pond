@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,7 +22,7 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping
-    public Page<Post> getPosts(@PageableDefault(sort = { "id" }, direction = Sort.Direction.ASC)Pageable pageable){
+    public Page<Post> getPosts(Pageable pageable){
         return postService.getPostList(pageable);
     }
 
@@ -34,5 +35,4 @@ public class PostController {
         URI url = new URI("/api/posts");
         return ResponseEntity.created(url).body("{\"msg\":\"created\"}");
     }
-
 }

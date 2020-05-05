@@ -8,25 +8,33 @@
     display: inline-block;
 }
 
-.comment-item{
-    background-color: #ffffff;
-    margin-top: 10px;
-    color: #636363;
-    border-radius: 0.25em;
-    padding: 1em;
+.comment-section{
+    margin-top: 20px;
 }
 
-.comment-item .content{
-margin-bottom: 0px;
-}
+    .comment-list{
+        list-style: none;
+    }
+
+    .comment-item{
+        background-color: #ffffff;
+        color: black;
+        background-color: #ffffff;
+        margin-bottom: 20px;
+        width: 100%;
+        border-radius: 0.25em;
+        padding: 1em;
+    }
+
+    .comment-item .content{
+        color: black;
+        font-size: 1.0em;
+        margin-bottom: 0px;
+    }
 
 
 .comment{
-    margin-top: 40px;
-}
-
-.comment-list{
-    list-style: none;
+    margin-top: 40px; 
 }
 
 .comment textarea{

@@ -23,7 +23,5 @@ public class PostResponse {
         this.content = post.getContent();
         this.createAt = post.getCreateAt();
         this.updateAt = post.getUpdateAt();
-        this.commentNum = post.getComments().size();
-        this.likeNum = post.getLikes().size();
     }
 }

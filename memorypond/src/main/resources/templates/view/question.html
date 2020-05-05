@@ -6,7 +6,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="../css/common/common.css" />
-        <link rel="stylesheet" href="../css/wellcome.css" />
+        <link rel="stylesheet" href="../css/question.css" />
 		<noscript>
             <link rel="stylesheet" href="../css/common/noscript.css" />
         </noscript>
@@ -22,20 +22,12 @@
                     <h2>고민 남기기</h2>
                     <form method="post" action="#">
                         <div class="row gtr-uniform">
-                            <div class="col-6 col-12-xsmall">
-                                <input type="text" name="name" id="name" value="" placeholder="고민제목" />
-                            </div>
                             <div class="col-12 category-wrapper">
                                 <p class="category-title"></p>
                                 <select name="category" id="category">
-                                    <option value="1">Manufacturing</option>
                                 </select>
                             </div>
                             <div id = "radio">
-                                <!-- <div class="col-4 col-12-small">
-                                    <input type="radio" name="title" checked>
-                                    <label>Low</label>
-                                </div> -->
                             </div>
                             <div class="col-12">
                                 <textarea name="content" id="content" placeholder="고민내용(3글자 이상)" rows="6"></textarea>
@@ -47,8 +39,8 @@
                             </div>
                             <div class="col-12">
                                 <ul class="actions">
-                                    <li><input type="submit" value="고민 남기기)" class="primary" id="send"/></li>
-                                    <li><input type="reset" value="돌아가기" /></li>
+                                    <li><input type="submit" value="고민 남기기" class="primary" id="send"/></li>
+                                    <li><a href="/main" class="button fit">돌아가기</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -70,8 +62,8 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>
 		<script type="rv-template" id="radio_item">
             <div class="col-4 col-12-small">
-                <input type="radio" name="radioText" value={{id}} checked>
-                <label>{{name}}</label>
+                <input type="radio" name="radioText" id=radio{{id}} value={{id}}>
+                <label for=radio{{id}}>{{name}}</label>
             </div>
 		</script>
 	</body>

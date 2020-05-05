@@ -1,26 +1,31 @@
-.post-item{
-    color: black;
-    background-color: #ffffff;
-    margin-top: 10px;
-    color: #636363;
-    border-radius: 0.25em;
-    padding: 1em;
+.post-list{
+    list-style: none;
 }
+    .post-item{
+        color: black;
+        background-color: #ffffff;
+        margin-bottom: 20px;
+        width: 100%;
+        border-radius: 0.25em;
+        padding: 1em;
+    }
 
-.post-item .post-title{
-    color: black;
-    font-size: 1.3em;
-    margin-bottom: 10px;
-}
+    .post-item .post-title{
+        color: black;
+        font-size: 1.0em;
+        margin-bottom: 10px;
+    }
 
-.post-item .post-content{
-    max-height: 3rem;
-    overflow: hidden;
-    margin-bottom: 0px;
-}
+    .post-item .post-content{
+        font-size: 1.0em;
+        margin-bottom: 0px;
+        white-space: nowrap;
+        margin-bottom: 0px;
+        text-overflow:ellipsis;
+        overflow: hidden;
+    }
 
 #page{
-    height: 30px;
     font-size: 2em;
 }
 
@@ -40,7 +45,6 @@
         .page-list li:last-child {
             padding-right: 0 !important;
         }
-
 
 .page-index{
     /* width: 2rem;

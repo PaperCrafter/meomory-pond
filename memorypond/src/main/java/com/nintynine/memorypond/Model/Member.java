@@ -26,14 +26,14 @@ public class Member {
 
     private String updateAt;
 
-    @OneToMany(mappedBy = "member")
-    private List<Post> posts = new ArrayList<Post>();
-
-    @OneToMany(mappedBy = "member")
-    private List<Comment> comments = new ArrayList<Comment>();
-
-    @OneToMany(mappedBy = "member")
-    private List<Like> likes = new ArrayList<Like>();
+//    @OneToMany(mappedBy = "member")
+//    private List<Post> posts = new ArrayList<Post>();
+//
+//    @OneToMany(mappedBy = "member")
+//    private List<Comment> comments = new ArrayList<Comment>();
+//
+//    @OneToMany(mappedBy = "member")
+//    private List<Like> likes = new ArrayList<Like>();
 
     public Member(String username, String password, String createAt, String updateAt) {
         this.username = username;

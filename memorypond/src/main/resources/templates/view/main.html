@@ -28,26 +28,8 @@
 				<h1>Memory Pond</h1>
 				<p>당신의 고민은 무엇인가요?</p>
 			</header>
-			<section>
-				<ul class = "post-list">
-					<li class="post-item">
-						<div>
-							<h2 class="post-title">된장찌개를 흘렸어요</h2>
-							<p class="post-content">된장찌개를 바닥에 흘려버리고 말았습니다. ㅠㅠ</p>
-						</div>
-					</li>
-					<li class="post-item">
-						<div>
-							<h2 class="post-title">올해 취업 잘 되게 해주세요</h2>
-							<p class="post-content">코로나 떄문에 취업이 너무 걱정되요! 올해 꼭 취업 잘 했으면 좋겠습니다</p>
-						</div>
-					</li>
-					<li class="post-item">
-						<div>
-							<h2 class="post-title">Magna feugiat lorem</h2>
-							<p class="post-content">Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis fames ac ante ipsum primis in faucibus.</p>
-						</div>
-					</li>
+			<section id="post">
+				<ul class = "post-list">				
 				</ul>
 			</section>
 			<section id="page">
@@ -76,7 +58,12 @@
 		<script src="../js/main.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>
 		<script type="rv-template" id="card_item">
-			
+			<li class="post-item main">
+				<div id={{id}}>
+					<h2 class="post-title">Q. {{question.name}}</h2>
+					<p class="post-content">A. {{content}}</p>
+				</div>
+			</li>
 		</script>
 	</body>
 </html>

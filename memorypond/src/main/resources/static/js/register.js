@@ -8,7 +8,7 @@ function RegisterForm(){
 }
 
 RegisterForm.prototype = {
-    activateBtnSend:function(){
+    activateBtnSend: function(){
         let btnSend = this.form.querySelector('#btnSend');
         let errorSercion = document.querySelector('.error-message');
 
@@ -27,6 +27,7 @@ RegisterForm.prototype = {
                 "username": username,
                 "password": password
             }
+
             var xhr = new XMLHttpRequest();
             xhr.onload=function(){
                 if(xhr.status === 201){
@@ -45,7 +46,7 @@ RegisterForm.prototype = {
             xhr.send(JSON.stringify(data));
         });
     },
-    validateForm:function(username, password, passwordConfirm){
+    validateForm: function(username, password, passwordConfirm){
         let errorSercion = document.querySelector('.error-message');
         const passwordRegx = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#?&]{5,15}$/;
         if(username.length < 1 || username.length > 15){

@@ -1,5 +1,6 @@
 package com.nintynine.memorypond.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nintynine.memorypond.Model.Request.PostRequest;
 import lombok.*;
 
@@ -25,13 +26,8 @@ public class Post {
 
     private String updateAt;
 
-    @OneToMany(mappedBy = "post")
-    private List<Comment> comments = new ArrayList<Comment>();
-
-    @OneToMany(mappedBy = "post")
-    private List<Like> likes = new ArrayList<Like>();
-
     @ManyToOne
+    @JsonIgnore
     @JoinColumn
     private Member member;
 
@@ -39,13 +35,11 @@ public class Post {
     @JoinColumn
     private Question question;
 
-//    public Post(String content, String createAt, String updateAt, List<Comment> comments, List<Like> likes, Member member, Question question) {
-//        this.content = content;
-//        this.createAt = createAt;
-//        this.updateAt = updateAt;
-//        this.comments = comments;
-//        this.likes = likes;
-//        this.member = member;
-//        this.question = question;
-//    }
+    public Post(String content, String createAt, String updateAt, List<Comment> comments, List<Like> likes, Member member, Question question) {
+        this.content = content;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.member = member;
+        this.question = question;
+    }
 }

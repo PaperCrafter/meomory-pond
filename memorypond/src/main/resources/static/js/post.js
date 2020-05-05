@@ -32,3 +32,27 @@ Menu.prototype = {
         );
     }
 }
+
+function Content(){
+
+}
+
+Content.prototype = {
+
+}
+
+function CommentList(){
+
+}
+
+CommentList.prototype = {
+
+}
+
+function CommentForm(){
+
+}
+
+CommentForm.prototype = {
+    
+}
