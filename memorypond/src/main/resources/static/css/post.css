@@ -8,6 +8,10 @@
     display: inline-block;
 }
 
+#content .title{
+    font-size: 1.0em;
+}
+
 .comment-section{
     margin-top: 20px;
 }
@@ -26,6 +30,10 @@
         padding: 1em;
     }
 
+        .comment-item p{
+            font-size: 1.0em;
+        }
+
     .comment-item .content{
         color: black;
         font-size: 1.0em;
@@ -34,7 +42,8 @@
 
 
 .comment{
-    margin-top: 40px; 
+    margin-top: 40px;
+    font-size: 1.0em;
 }
 
 .comment textarea{

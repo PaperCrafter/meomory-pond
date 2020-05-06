@@ -1,9 +1,12 @@
 package com.nintynine.memorypond.Service;
 
+import com.nintynine.memorypond.Model.Projection.PostBoardProjection;
+import com.nintynine.memorypond.Model.Projection.PostPageProjection;
 import com.nintynine.memorypond.Model.Member;
 import com.nintynine.memorypond.Model.Post;
 import com.nintynine.memorypond.Model.Question;
 import com.nintynine.memorypond.Model.Request.PostRequest;
+import com.nintynine.memorypond.Repository.CommentRepository;
 import com.nintynine.memorypond.Repository.MemberRepsitory;
 import com.nintynine.memorypond.Repository.PostRepository;
 import com.nintynine.memorypond.Repository.QuestionRepository;
@@ -26,14 +29,18 @@ public class PostService {
 
 
     @Transactional(readOnly = true)
-    public Page<Post> getPostList(Pageable pageable){
+    public Page<PostPageProjection> getPostList(Pageable pageable){
         try{
             if(pageable.getPageSize() > 10)
                 throw new IllegalArgumentException();
         }catch(IllegalArgumentException ex){
 
         }
-        return postRepository.findAll(pageable);
+        return postRepository.findAllBy(pageable);
+    }
+
+    public PostBoardProjection getPost(int postId) {
+        return postRepository.findAllById(postId).get(0);
     }
 
     @Transactional

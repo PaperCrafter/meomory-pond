@@ -14,7 +14,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,16 +25,24 @@ public class Post {
 
     private String updateAt;
 
-    @ManyToOne
-    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn
     private Member member;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn
     private Question question;
 
-    public Post(String content, String createAt, String updateAt, List<Comment> comments, List<Like> likes, Member member, Question question) {
+    public Post(String content, String createAt, String updateAt, Member member, Question question) {
+        this.content = content;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.member = member;
+        this.question = question;
+    }
+
+    public Post(int id, String content, String createAt, String updateAt, Member member, Question question) {
+        this.id = id;
         this.content = content;
         this.createAt = createAt;
         this.updateAt = updateAt;

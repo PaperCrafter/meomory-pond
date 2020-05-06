@@ -27,9 +27,9 @@
 			<section>
 				<div id="main">
 					<section id="content" class="main">
-						<h2 class="title">Q. 고기만두가 너무 먹고싶어요</h2>
-						<p class="author"> written By 서연</p>
-						<p class="content">A. 고기 만두가 너무 먹고싶어요. 어떡하죠?</p>
+						<h2 class="title">Q. </h2>
+						<p class="author"> written By </p>
+						<p class="content">A. </p>
 					</section>
 				</div>
 			</section>
@@ -38,16 +38,17 @@
 
 				</ul>
 			</section>
-			<section sec:authorize="isAuthenticated()" class="comment">
+			<section sec:authorize="isAuthenticated()" id="comment">
 				<p>덧글 남기기</p>
 				<form method="post" action="#">
 					<div class="row gtr-uniform">
 						<div class="col-12">
-							<textarea name="demo-message" id="demo-message" placeholder="고민이 있는 친구에게 때로는 따뜻한 위로의 한마디 어떨까요?" rows="4"></textarea>
+							<div></div>
+							<textarea name="message" id="message" placeholder="고민이 있는 친구에게 때로는 따뜻한 위로의 한마디 어떨까요?(3글자 이상 작성)" rows="4"></textarea>
 						</div>
 						<div class="col-12">
 							<ul class="actions">
-								<li><input type="submit" value="뎃글 작성" class="primary" /></li>
+								<li><input type="submit" value="뎃글 작성" class="primary" id="send"/></li>
 								<li><input type="reset" value="초기화" /></li>
 							</ul>
 						</div>
@@ -69,9 +70,9 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>
 		<script type="rv-template" id="comment_item">
 			<li class="comment-item main">
-				<div class="">
-					<p class="author">written By 종이</p>
-					<p class="content">저도 먹고싶어요!</p>
+				<div class="{{id}}">
+					<p class="author">written By {{usernmae}}</p>
+					<p class="content">{{content}}</p>
 				</div>
 			</li>
 		</script>

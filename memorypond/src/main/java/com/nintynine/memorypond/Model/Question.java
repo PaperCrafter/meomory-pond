@@ -21,7 +21,7 @@ public class Question {
 
     String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn
     private Category category;
 }

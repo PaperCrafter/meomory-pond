@@ -24,6 +24,10 @@
         text-overflow:ellipsis;
         overflow: hidden;
     }
+    .post-item .post-username{
+        font-size: 0.7em;
+        float: right;
+    }
 
 #page{
     font-size: 2em;

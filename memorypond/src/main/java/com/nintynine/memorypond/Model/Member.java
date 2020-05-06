@@ -12,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 public class Member {
     @Id
@@ -39,18 +40,6 @@ public class Member {
         this.username = username;
         this.password = password;
         this.createAt = createAt;
-        this.updateAt = updateAt;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setCreateAt(String createAd){
-        this.createAt = createAd;
-    }
-
-    public void setUpdateAt(String updateAt){
         this.updateAt = updateAt;
     }
 }
