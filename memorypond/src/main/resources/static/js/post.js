@@ -3,8 +3,8 @@ addEventListener("DOMContentLoaded", function(){
     var menu = new Menu();
     var postContent = new PostContent();
     var commentList = new CommentList();
-    var commentForm = new CommentForm(commentList);
-    commentForm.sendForm();
+    var commentForm = new CommentForm();
+    commentForm.sendForm(commentList);
 });
 
 function Menu(){
@@ -73,14 +73,14 @@ CommentList.prototype = {
         var pathArray = window.location.pathname.split('/');
         var postId = pathArray[pathArray.length -1];
 
-        var commentUl = this.commentListArea.querySelector('ul');
         var xhr = new XMLHttpRequest();
         xhr.onload = function(){
             if(xhr.status === 200){
+                this.commentListArea.innerHTML = "";
+                var bindTemplate =  Handlebars.compile(this.commentTemplate);
                 var data = JSON.parse(xhr.responseText);
                 data.forEach((item)=>{
-                    var bindTemplate = Handlebars.compile(JSON.stringify(item));
-                    commentUl.innerHTML += bindTemplate;
+                    this.commentListArea.innerHTML += bindTemplate(item);
                 });
             }else{
                 console.error(xhr.responseText);
@@ -89,12 +89,11 @@ CommentList.prototype = {
         var url =  "/api/posts/" + postId + "/comments";
         xhr.open("GET", url);
         xhr.send();
-    }.bind(this)
+    }
 }
 
 function CommentForm(){
-    this.commentFormArea = document.querySelector('.comment');
-    this.commentTemplate = document.querySelector('#comment_item').innerHTML;
+    this.commentFormArea = document.querySelector('#comment');
 }
 
 CommentForm.prototype = {
@@ -110,24 +109,20 @@ CommentForm.prototype = {
                 return false;
 
             var xhr = new XMLHttpRequest();
-            var radioVal = $('input[name="radioText"]:checked').val();
             let data = {
                 "content" : this.commentFormArea.querySelector("#message").value,
                 "postId" : postId
             }
-
             data = JSON.stringify(data);
             xhr.onload=function(){
                 if(xhr.status === 201){
-                    var data = JSON.parse(xhr.responseText);
-                    var bindTemplate = Handlebars.compile(JSON.stringify(data));
-                    commentList.commentListArea.querySelector('ul').innerHTML += bindTemplate; 
+                    commentList.getComments();
                 }else{
                     console.error(xhr.responseText);
                 }
             }.bind(this)
 
-            var url = "/api/posts";
+            var url = "/api/comments";
             xhr.open("POST", url);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(data);

@@ -4,13 +4,23 @@
     margin-bottom: 10px;
 }
 
-.content{
+#content{
     display: inline-block;
 }
 
-#content .title{
-    font-size: 1.0em;
-}
+    #content .title{
+        font-size: 1.0em;
+        margin-bottom: 30px;
+    }
+    
+    #content .content{
+        font-size: 1.0em;
+        margin-bottom: 30px;
+    }
+    
+    #content .author{
+        font-size: 0.8em;
+    }
 
 .comment-section{
     margin-top: 20px;
@@ -21,6 +31,7 @@
     }
 
     .comment-item{
+        display: inline-block;
         background-color: #ffffff;
         color: black;
         background-color: #ffffff;
@@ -32,6 +43,11 @@
 
         .comment-item p{
             font-size: 1.0em;
+        }
+
+        .comment-item .author{
+            font-size: 0.8em;
+            margin-bottom: 0px;
         }
 
     .comment-item .content{
