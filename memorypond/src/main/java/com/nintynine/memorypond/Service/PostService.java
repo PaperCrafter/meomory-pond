@@ -39,9 +39,16 @@ public class PostService {
         return postRepository.findAllBy(pageable);
     }
 
+    @Transactional(readOnly = true)
     public PostBoardProjection getPost(int postId) {
         return postRepository.findAllById(postId).get(0);
     }
+
+    @Transactional(readOnly = true)
+    public int countPostsByUsername(String username) {
+        return postRepository.countPostsByMemberUsername(username);
+    }
+
 
     @Transactional
     public Post createPost(PostRequest postRequest){

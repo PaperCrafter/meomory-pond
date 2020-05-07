@@ -2,6 +2,7 @@ package com.nintynine.memorypond.controller;
 
 import com.nintynine.memorypond.Model.Member;
 import com.nintynine.memorypond.Service.MemberService;
+import com.nintynine.memorypond.Service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -13,22 +14,18 @@ import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/main")
-public class MainPageController {
+@RequestMapping("/post-created")
+public class PostCreatedController {
     private final MemberService memberService;
+    private final PostService postService;
 
     @GetMapping
     public String getMainPage(@AuthenticationPrincipal User user,
                               Map<String, Object> model){
-        if(user == null){
-            return "main";
+        int postCount = postService.countPostsByUsername(user.getUsername());
+        if(postCount == 1){
+            return "redirect:/tutorial-end";
         }
-        model.put("member", user.getUsername());
-        Member member = memberService.getMember(user.getUsername());
-        if(member.getHasVisited() == false){
-            memberService.setHasVisited(member);
-            return "redirect:/tutorial-begin";
-        }
-        return "main";
+        return "redirect:/main";
     }
 }

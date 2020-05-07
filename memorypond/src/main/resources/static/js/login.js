@@ -9,16 +9,11 @@ function LoginForm(){
 }
 
 LoginForm.prototype = {
-    activateBtnSend:function(){
 
-    },
     activateBtnMain:function(){
         let btnMain = this.form.querySelector('.to-main');
         btnMain.addEventListener('click', (evt)=>{
             location.href="/main";
         })
-    },
-    validateForm:function(){
-
     }
 }

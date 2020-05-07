@@ -28,6 +28,12 @@ public class MemberService {
         String currentDateTime = LocalDateTime.now().toString();
         member.setCreateAt(currentDateTime);
         member.setUpdateAt(currentDateTime);
+        member.setHasVisited(false);
+        return memberRepsitory.save(member);
+    }
+
+    public Member setHasVisited(Member member){
+        member.setHasVisited(true);
         return memberRepsitory.save(member);
     }
 }

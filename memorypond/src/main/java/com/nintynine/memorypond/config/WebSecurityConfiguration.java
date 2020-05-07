@@ -31,7 +31,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                             "/register",
                             "/main",
                             "/login",
-                            "/wellcome",
+                            "/welcome",
                             "/post/**"
                             ).permitAll()
                     .antMatchers("/admin").hasRole("ADMIN")

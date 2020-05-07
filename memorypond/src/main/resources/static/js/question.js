@@ -84,7 +84,7 @@ PostForm.prototype = {
             data = JSON.stringify(data);
             xhr.onload=function(){
                 if(xhr.status === 201){
-                    location.href="/main";
+                    location.href="/post-created";
                 }else{
                     console.error(xhr.responseText);
                 }
@@ -118,7 +118,7 @@ PostForm.prototype = {
             return false;
         }
 
-        var content = this.form.querySelector("content").value;
+        var content = this.form.querySelector("#content").value;
         if(content.lengt < 3){
             errorSection.textContent = "3글자 이상 메세지를 입력해 주세요.";
             return false;
