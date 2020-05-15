@@ -1,12 +1,11 @@
 package com.nintynine.memorypond.Service;
 
-import com.nintynine.memorypond.Model.Projection.PostBoardProjection;
-import com.nintynine.memorypond.Model.Projection.PostPageProjection;
 import com.nintynine.memorypond.Model.Member;
 import com.nintynine.memorypond.Model.Post;
+import com.nintynine.memorypond.Model.Projection.PostBoardProjection;
+import com.nintynine.memorypond.Model.Projection.PostPageProjection;
 import com.nintynine.memorypond.Model.Question;
 import com.nintynine.memorypond.Model.Request.PostRequest;
-import com.nintynine.memorypond.Repository.CommentRepository;
 import com.nintynine.memorypond.Repository.MemberRepsitory;
 import com.nintynine.memorypond.Repository.PostRepository;
 import com.nintynine.memorypond.Repository.QuestionRepository;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @Service

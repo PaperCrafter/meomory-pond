@@ -84,20 +84,31 @@ PostForm.prototype = {
             data = JSON.stringify(data);
             xhr.onload=function(){
                 if(xhr.status === 201){
-                    location.href="/post-created";
+                    var lotusData = JSON.parse(xhr.responseText);
+                    var socket = io("http://13.209.97.183:3000");
+                    var stringData = JSON.stringify(lotusData)
+                    socket.emit("send_lotus_data", encodeURI(stringData));       
+                    socket.on("success", (res)=>{
+                        socket.disconnect();
+                        console.log("data sending success to socket server");
+                        location.href="/post-created";      
+                    });     
+                    //for exceiption control  
+                    setTimeout(()=>{
+                        socket.disconnect();
+                        console.log("creation timeout");
+                        location.href="/post-created";  
+                    }, 3000);      
                 }else{
                     console.error(xhr.responseText);
                 }
-            }
+            }.bind(this);
 
             var url = "/api/posts";
             xhr.open("POST", url);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(data);
         });
-    },
-    activateBack: function(){
-
     },
     isEmpty: function(item){
         if(typeof item == "undefined" || item == null || item == "")

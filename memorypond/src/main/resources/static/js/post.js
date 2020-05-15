@@ -112,15 +112,24 @@ CommentForm.prototype = {
             let data = {
                 "content" : this.commentFormArea.querySelector("#message").value,
                 "postId" : postId
-            }
+            };
             data = JSON.stringify(data);
             xhr.onload=function(){
                 if(xhr.status === 201){
+                    var lotusData = JSON.parse(xhr.responseText);
+                    var socket = io("http://13.209.97.183:3000");
+                    var stringData = JSON.stringify(lotusData)
+                    socket.emit("send_lotus_data", encodeURI(stringData));       
+                    socket.on("success", (res)=>{
+                        socket.disconnect();
+                        console.log("data sending success to socket server");  
+                    });     
                     commentList.getComments();
                 }else{
                     console.error(xhr.responseText);
                 }
-            }.bind(this)
+                
+            }.bind(this);
 
             var url = "/api/comments";
             xhr.open("POST", url);
@@ -135,5 +144,16 @@ CommentForm.prototype = {
             return false;
         }
         return true;
+    },
+    sendDataToGame: function(data) {
+        var socket = new SockJS('/websocket');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            stompClient.subscribe('/topic/fish', function (chat) {
+                showChat(JSON.parse(chat.body));
+            });
+        });
+        stompClient.send("/app/fish", {}, JSON.stringify({'name': $("#name").val(), 'message': $("#chatMessage").val()}));
     }
+      
 }

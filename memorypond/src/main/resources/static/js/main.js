@@ -65,7 +65,7 @@ PostList.prototype = {
                 console.log("error");
             }
         }.bind(this)
-        var url = "/api/posts" + "?page=" + page + "&size=" + this.sizePerPage;
+        var url = "/api/posts" + "?page=" + page + "&size=" + this.sizePerPage + "&sort=createAt,DESC";
         xhr.open("GET", url);
         xhr.send();
     },

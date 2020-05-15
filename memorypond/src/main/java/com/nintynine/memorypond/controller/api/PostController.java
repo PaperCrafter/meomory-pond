@@ -46,6 +46,7 @@ public class PostController {
             return ResponseEntity.badRequest().body("{\"msg\":\"failed to create\"}");
         }
         URI url = new URI("/api/posts");
-        return ResponseEntity.created(url).body("{\"msg\":\"created\"}");
+        post.setMember(null);
+        return ResponseEntity.created(url).body(post);
     }
 }
