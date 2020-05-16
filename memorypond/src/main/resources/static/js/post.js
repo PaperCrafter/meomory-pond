@@ -119,7 +119,7 @@ CommentForm.prototype = {
                     var lotusData = JSON.parse(xhr.responseText);
                     var socket = io("http://13.209.97.183:3000");
                     var stringData = JSON.stringify(lotusData)
-                    socket.emit("send_lotus_data", encodeURI(stringData));       
+                    socket.emit("send_fish_data", encodeURI(stringData));       
                     socket.on("success", (res)=>{
                         socket.disconnect();
                         console.log("data sending success to socket server");  
