@@ -20,7 +20,7 @@ public class PostCreatedController {
     private final PostService postService;
 
     @GetMapping
-    public String getMainPage(@AuthenticationPrincipal User user,
+    public String postCreated(@AuthenticationPrincipal User user,
                               Map<String, Object> model){
         int postCount = postService.countPostsByUsername(user.getUsername());
         if(postCount == 1){

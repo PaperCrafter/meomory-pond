@@ -19,6 +19,8 @@ public class Post {
 
     private String content;
 
+    private int weight;
+
     private String createAt;
 
     private String updateAt;
@@ -39,9 +41,10 @@ public class Post {
         this.question = question;
     }
 
-    public Post(int id, String content, String createAt, String updateAt, Member member, Question question) {
+    public Post(int id, String content, int weight, String createAt, String updateAt, Member member, Question question) {
         this.id = id;
         this.content = content;
+        this.weight = weight;
         this.createAt = createAt;
         this.updateAt = updateAt;
         this.member = member;

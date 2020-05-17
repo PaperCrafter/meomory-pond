@@ -7,6 +7,8 @@ public interface PostBoardProjection {
 
     String getContent();
 
+    int getWeight();
+
     String getCreateAt();
 
     String getUpdateAt();

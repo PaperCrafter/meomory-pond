@@ -14,7 +14,7 @@ public interface CommentProjection {
     @JsonIgnore
     String getMemberUsername();
 
-    String getPostId();
+    int getPostId();
 
     String getCreateAt();
 

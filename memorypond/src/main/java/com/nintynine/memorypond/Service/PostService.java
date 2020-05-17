@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -53,13 +54,24 @@ public class PostService {
         Optional<Member> member = memberRepsitory.findByUsername(postRequest.getUsername());
         Optional<Question> question = questionRepository.findById(postRequest.getQuestionId());
         LocalDateTime currentTime = LocalDateTime.now();
+
+        int weight = calcWeight(question.get().getWeight(), postRequest.getComment().length());
         Post post = Post.builder()
                 .content(postRequest.getComment())
                 .member(member.get())
+                .weight(weight)
                 .question(question.get())
                 .createAt(currentTime.toString())
                 .updateAt(currentTime.toString())
                 .build();
+
         return postRepository.save(post);
+    }
+
+    private int calcWeight(int defaultWeight, int stringLength){
+        Random random = new Random();
+        int weight = defaultWeight + stringLength * (random.nextInt(1) + 1);
+        weight = Math.min(weight, 600);
+        return weight;
     }
 }

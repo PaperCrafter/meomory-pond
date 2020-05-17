@@ -91,13 +91,13 @@ PostForm.prototype = {
                     socket.on("success", (res)=>{
                         socket.disconnect();
                         console.log("data sending success to socket server");
-                        location.href="/post-created";      
+                        location.href="/weight?postId=" + lotusData.id;      
                     });     
                     //for exceiption control  
                     setTimeout(()=>{
                         socket.disconnect();
                         console.log("creation timeout");
-                        location.href="/post-created";  
+                        location.href="/main";  
                     }, 3000);      
                 }else{
                     console.error(xhr.responseText);

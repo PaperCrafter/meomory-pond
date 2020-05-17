@@ -17,9 +17,11 @@ import java.util.List;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
-    String name;
+    private String name;
+
+    private int weight;
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn

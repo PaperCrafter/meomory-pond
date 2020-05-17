@@ -17,7 +17,10 @@ section{
 }
 
     .weight-area .sclae-img{
-        display: block; margin: 0px auto; 
+        width: 40%;
+        display: block; 
+        margin: 0px auto; 
+        margin-bottom: 10px;
     }
 
     .weight-area .weight-value{
