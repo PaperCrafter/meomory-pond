@@ -15,4 +15,6 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
     List<CommentProjection> findAllById(int commentId);
 
     Comment save(Comment comment);
+
+    void deleteAllByPostId(int postId);
 }

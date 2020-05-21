@@ -50,6 +50,12 @@
             margin-bottom: 0px;
         }
 
+        .removal{
+            float: right;
+            font-size: 0.8em;
+            clear: both;
+        }
+
     .comment-item .content{
         color: black;
         font-size: 1.0em;

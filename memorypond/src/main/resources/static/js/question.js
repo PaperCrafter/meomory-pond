@@ -98,7 +98,7 @@ PostForm.prototype = {
                         socket.disconnect();
                         console.log("creation timeout");
                         location.href="/main";  
-                    }, 3000);      
+                    }, 3000);
                 }else{
                     console.error(xhr.responseText);
                 }

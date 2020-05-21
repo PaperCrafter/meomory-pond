@@ -1,6 +1,5 @@
 package com.nintynine.memorypond.controller;
 
-import com.nintynine.memorypond.Model.Member;
 import com.nintynine.memorypond.Service.MemberService;
 import com.nintynine.memorypond.Service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RequestMapping("/post-created")
 public class PostCreatedController {
-    private final MemberService memberService;
     private final PostService postService;
 
     @GetMapping

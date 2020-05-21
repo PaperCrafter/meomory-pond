@@ -30,6 +30,7 @@
 						<h2 class="title">Q. </h2>
 						<p class="content">A. </p>
 						<p class="author"> written By </p>
+						<a th:if="${canRemove}" class="removal"> 삭제</a>
 					</section>
 				</div>
 			</section>
@@ -39,17 +40,17 @@
 				</ul>
 			</section>
 			<section sec:authorize="isAuthenticated()" id="comment">
-				<p>덧글 남기기</p>
+				<p>댓글 남기기</p>
 				<form method="post" action="#">
 					<div class="row gtr-uniform">
 						<div class="col-12">
 							<div></div>
-							<textarea name="message" id="message" placeholder="고민이 있는 친구에게 때로는 따뜻한 위로의 한마디 어떨까요?(3글자 이상 작성)" rows="4"></textarea>
+							<textarea name="message" id="message" placeholder="고민이 있는 친구에게 때로는 따뜻한 위로의 한마디 어떨까요? (3글자 이상 작성)" rows="4"></textarea>
 						</div>
 						<div class="col-12">
 							<ul class="actions">
-								<li><input type="submit" value="덧글 작성" class="primary" id="send"/></li>
-								<li><input type="reset" value="초기화" /></li>
+								<li><input type="submit" value="댓글 작성" class="primary" id="send"/></li>
+								<li><input type="reset" value="초기화" id="reset"/></li>
 							</ul>
 						</div>
 					</div>

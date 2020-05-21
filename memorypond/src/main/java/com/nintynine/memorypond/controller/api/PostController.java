@@ -49,4 +49,12 @@ public class PostController {
         post.setMember(null);
         return ResponseEntity.created(url).body(post);
     }
+
+    @DeleteMapping("/{postId}")
+    public ResponseEntity removePost(@PathVariable("postId") int postId) throws URISyntaxException {
+        if(postService.deletePost(postId)){
+            return ResponseEntity.ok().body("{\"deleted\":\"success\"}");
+        }
+        return ResponseEntity.badRequest().body("{\"deleted\":\"failed\"}");
+    }
 }

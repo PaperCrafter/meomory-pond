@@ -2,6 +2,7 @@ addEventListener("DOMContentLoaded", function(){
     // new ReviewWritePage();
     var menu = new Menu();
     var postContent = new PostContent();
+    if(!document.querySelector('#comment'))return;
     var commentList = new CommentList();
     var commentForm = new CommentForm();
     commentForm.sendForm(commentList);
@@ -39,6 +40,7 @@ Menu.prototype = {
 function PostContent(){
     this.contentArea = document.querySelector('#content');
     this.displayContent();
+    this.deleteContent();
 }
 
 PostContent.prototype = {
@@ -59,6 +61,30 @@ PostContent.prototype = {
         var url = "/api/posts/" + postId;
         xhr.open("GET", url);
         xhr.send();
+    },
+    deleteContent:function(){
+        var btnRemove = this.contentArea.querySelector('.removal');
+        if(btnRemove == null) return;
+
+        var pathArray = window.location.pathname.split('/');
+        var postId = pathArray[pathArray.length -1];
+        
+        btnRemove.addEventListener('click', (evt)=>{
+            evt.preventDefault();
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                var data = JSON.parse(xhr.responseText);
+                if(xhr.status === 200){
+                    location.href='/main';
+                }else{
+                    alert("삭제에 실패하였습니다.");
+                    console.error(xhr.responseText);
+                }
+            }.bind(this);
+            var url = "/api/posts/" + postId;
+            xhr.open("DELETE", url);
+            xhr.send();
+        })
     }
 }
 
@@ -94,6 +120,7 @@ CommentList.prototype = {
 
 function CommentForm(){
     this.commentFormArea = document.querySelector('#comment');
+    this.intializeForm();
 }
 
 CommentForm.prototype = {
@@ -125,6 +152,8 @@ CommentForm.prototype = {
                         console.log("data sending success to socket server");  
                     });     
                     commentList.getComments();
+
+                    document.querySelector('#message').value = '';
                 }else{
                     console.error(xhr.responseText);
                 }
@@ -145,15 +174,10 @@ CommentForm.prototype = {
         }
         return true;
     },
-    sendDataToGame: function(data) {
-        var socket = new SockJS('/websocket');
-        stompClient = Stomp.over(socket);
-        stompClient.connect({}, function (frame) {
-            stompClient.subscribe('/topic/fish', function (chat) {
-                showChat(JSON.parse(chat.body));
-            });
+    intializeForm: function(){
+        var resetBtn = this.commentFormArea.querySelector('#reset');
+        resetBtn.addEventListener('click', (evt)=>{
+            this.commentFormArea.querySelector("#message").value = '';
         });
-        stompClient.send("/app/fish", {}, JSON.stringify({'name': $("#name").val(), 'message': $("#chatMessage").val()}));
     }
-      
 }

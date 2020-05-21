@@ -6,6 +6,7 @@ import com.nintynine.memorypond.Model.Projection.PostBoardProjection;
 import com.nintynine.memorypond.Model.Projection.PostPageProjection;
 import com.nintynine.memorypond.Model.Question;
 import com.nintynine.memorypond.Model.Request.PostRequest;
+import com.nintynine.memorypond.Repository.CommentRepository;
 import com.nintynine.memorypond.Repository.MemberRepsitory;
 import com.nintynine.memorypond.Repository.PostRepository;
 import com.nintynine.memorypond.Repository.QuestionRepository;
@@ -23,6 +24,7 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository;
+    private final CommentRepository commentRepository;
     private final QuestionRepository questionRepository;
     private final MemberRepsitory memberRepsitory;
 
@@ -73,5 +75,12 @@ public class PostService {
         int weight = defaultWeight + stringLength * (random.nextInt(1) + 1);
         weight = Math.min(weight, 600);
         return weight;
+    }
+
+    @Transactional
+    public boolean deletePost(int postId){
+        commentRepository.deleteAllByPostId(postId);
+        postRepository.deleteById(postId);
+        return true;
     }
 }
