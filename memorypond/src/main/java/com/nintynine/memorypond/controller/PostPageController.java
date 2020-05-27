@@ -24,7 +24,6 @@ public class PostPageController {
     public ModelAndView getPostPage(@PathVariable int postId,
                                     @AuthenticationPrincipal User user){
         PostBoardProjection post = postService.getPost(postId);
-        //Map<String, Object> model = new HashMap<String, Object>();
 
         ModelAndView mav = new ModelAndView("post");
         if(user == null) return mav;

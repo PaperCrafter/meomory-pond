@@ -16,7 +16,7 @@ public class QuestionService {
     private final QuestionRepository questionRepository;
 
     @Transactional(readOnly = true)
-    public List<Question> getQuestionsByuCategoryId(int categoryId){
+    public List<Question> getQuestionsByCategoryId(int categoryId){
         return questionRepository.findAllByCategoryId(categoryId);
     }
 }

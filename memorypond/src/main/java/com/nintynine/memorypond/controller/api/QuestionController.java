@@ -14,6 +14,6 @@ public class QuestionController {
 
     @GetMapping("/api/categories/{categoryId}/questions")
     public List<Question> getQuestions(@PathVariable int categoryId){
-        return questionService.getQuestionsByuCategoryId(categoryId);
+        return questionService.getQuestionsByCategoryId(categoryId);
     }
 }
