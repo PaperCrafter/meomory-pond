@@ -35,7 +35,7 @@ public class PostService {
             if(pageable.getPageSize() > 10)
                 throw new IllegalArgumentException();
         }catch(IllegalArgumentException ex){
-
+            ex.printStackTrace();
         }
         return postRepository.findAllBy(pageable);
     }
