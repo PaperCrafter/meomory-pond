@@ -1,7 +1,7 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.Model.Category;
-import com.nintynine.memorypond.Service.CategoryService;
+import com.nintynine.memorypond.model.Category;
+import com.nintynine.memorypond.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

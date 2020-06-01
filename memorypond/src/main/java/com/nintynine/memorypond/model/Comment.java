@@ -1,16 +1,18 @@
-package com.nintynine.memorypond.Model;
+package com.nintynine.memorypond.model;
 
-import com.nintynine.memorypond.Model.Projection.CommentProjection;
-import com.nintynine.memorypond.Model.Request.CommentRequest;
+import com.nintynine.memorypond.model.request.CommentRequest;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Comment {
     @Id
     @Getter

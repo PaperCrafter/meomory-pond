@@ -1,11 +1,10 @@
 package com.nintynine.memorypond.controller.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nintynine.memorypond.Model.Comment;
-import com.nintynine.memorypond.Model.Enum.Role;
-import com.nintynine.memorypond.Model.Projection.CommentProjection;
-import com.nintynine.memorypond.Model.Request.CommentRequest;
-import com.nintynine.memorypond.Service.CommentService;
+import com.nintynine.memorypond.model.enumclass.Role;
+import com.nintynine.memorypond.model.projection.CommentProjection;
+import com.nintynine.memorypond.model.request.CommentRequest;
+import com.nintynine.memorypond.service.CommentService;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,17 +12,16 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.MethodParameter;
+import org.springframework.data.projection.ProjectionFactory;
+import org.springframework.data.projection.SpelAwareProxyProjectionFactory;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -57,9 +55,6 @@ class CommentControllerTest {
 
     private User mockUser;
 
-    @Mock
-    private CommentProjection commentProjection;
-
     @BeforeEach
     public void setup() {
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
@@ -89,17 +84,21 @@ class CommentControllerTest {
 
     @Test
     public void createCommentTest() throws Exception {
-
         CommentRequest mockCommentRequest = EnhancedRandom.random(CommentRequest.class);
+        ProjectionFactory factory = new SpelAwareProxyProjectionFactory();
+        CommentProjection projection = factory.createProjection(CommentProjection.class);
+        projection.setPostId(1);
+        projection.setId(1);
+        projection.setContent("test completed");
 
-        given(commentService.createComment(any(CommentRequest.class), eq(mockUser))).willReturn(null);
+        given(commentService.createComment(any(CommentRequest.class), eq(mockUser))).willReturn(projection);
 
         mockMvc.perform(post("/api/comments")
                 .content(objectMapper.writeValueAsString(mockCommentRequest))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andDo(print());
-//                .andExpect(jsonPath("$.content").isString());
+                .andDo(print())
+                .andExpect(jsonPath("$.content").isString());
     }
 }

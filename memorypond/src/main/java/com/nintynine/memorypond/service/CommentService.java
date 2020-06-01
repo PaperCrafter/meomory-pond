@@ -1,17 +1,18 @@
-package com.nintynine.memorypond.Service;
+package com.nintynine.memorypond.service;
 
-import com.nintynine.memorypond.Model.Comment;
-import com.nintynine.memorypond.Model.Member;
-import com.nintynine.memorypond.Model.Projection.CommentProjection;
-import com.nintynine.memorypond.Model.Request.CommentRequest;
-import com.nintynine.memorypond.Repository.CommentRepository;
-import com.nintynine.memorypond.Repository.MemberRepsitory;
-import com.nintynine.memorypond.Repository.PostRepository;
+import com.nintynine.memorypond.model.Comment;
+import com.nintynine.memorypond.model.Member;
+import com.nintynine.memorypond.model.projection.CommentProjection;
+import com.nintynine.memorypond.model.request.CommentRequest;
+import com.nintynine.memorypond.model.user.CustomUser;
+import com.nintynine.memorypond.repository.CommentRepository;
+import com.nintynine.memorypond.repository.MemberRepsitory;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.ServiceMode;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,11 +22,14 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final MemberRepsitory memberRepsitory;
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     public List<CommentProjection> getCommentsByPost(int postId){
         return commentRepository.findAllByPostId(postId);
     }
 
-    public CommentProjection createComment(CommentRequest commentRequest, User user) {
+    public CommentProjection createComment(CommentRequest commentRequest, CustomUser user) {
+        commentRequest.setMemberId(user.getUserId());
         Optional<Member> member = memberRepsitory.findByUsername(user.getUsername());
         if(member.isPresent()){
             commentRequest.setMemberId(member.get().getId());

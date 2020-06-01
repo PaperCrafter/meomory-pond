@@ -1,8 +1,7 @@
-package com.nintynine.memorypond.Model.Request;
+package com.nintynine.memorypond.model.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Getter
 @NoArgsConstructor

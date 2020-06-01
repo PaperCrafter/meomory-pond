@@ -1,12 +1,11 @@
-package com.nintynine.memorypond.Service;
+package com.nintynine.memorypond.service;
 
-import com.nintynine.memorypond.Model.Member;
-import com.nintynine.memorypond.Repository.MemberRepsitory;
+import com.nintynine.memorypond.model.Member;
+import com.nintynine.memorypond.repository.MemberRepsitory;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.Null;
 import java.time.LocalDateTime;
 import java.util.Optional;
 

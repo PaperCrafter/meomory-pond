@@ -1,7 +1,7 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.Model.Category;
-import com.nintynine.memorypond.Service.CategoryService;
+import com.nintynine.memorypond.model.Category;
+import com.nintynine.memorypond.service.CategoryService;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

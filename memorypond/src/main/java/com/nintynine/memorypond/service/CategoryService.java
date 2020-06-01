@@ -1,7 +1,7 @@
-package com.nintynine.memorypond.Service;
+package com.nintynine.memorypond.service;
 
-import com.nintynine.memorypond.Model.Category;
-import com.nintynine.memorypond.Repository.CategoryRepository;
+import com.nintynine.memorypond.model.Category;
+import com.nintynine.memorypond.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.nintynine.memorypond.Model;
+package com.nintynine.memorypond.model;
 
 import lombok.Builder;
 import lombok.Getter;

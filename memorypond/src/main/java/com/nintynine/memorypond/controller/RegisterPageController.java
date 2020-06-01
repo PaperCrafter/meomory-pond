@@ -1,8 +1,7 @@
 package com.nintynine.memorypond.controller;
 
-import com.nintynine.memorypond.Model.Member;
-import com.nintynine.memorypond.Repository.MemberRepsitory;
-import com.nintynine.memorypond.Service.MemberService;
+import com.nintynine.memorypond.model.Member;
+import com.nintynine.memorypond.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

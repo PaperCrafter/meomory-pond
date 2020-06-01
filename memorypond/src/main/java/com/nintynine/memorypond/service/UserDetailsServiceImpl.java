@@ -1,8 +1,9 @@
-package com.nintynine.memorypond.Service;
+package com.nintynine.memorypond.service;
 
-import com.nintynine.memorypond.Model.Enum.Role;
-import com.nintynine.memorypond.Model.Member;
-import com.nintynine.memorypond.Repository.MemberRepsitory;
+import com.nintynine.memorypond.model.enumclass.Role;
+import com.nintynine.memorypond.model.Member;
+import com.nintynine.memorypond.model.user.CustomUser;
+import com.nintynine.memorypond.repository.MemberRepsitory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,6 +32,6 @@ class UserDetailsServiceImpl implements UserDetailsService {
         } else {
             grantedAuthorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
         }
-        return new User(member.getUsername(), member.getPassword(), grantedAuthorities);
+        return new CustomUser(member.getId() ,member.getUsername(), member.getPassword(), grantedAuthorities);
     }
 }

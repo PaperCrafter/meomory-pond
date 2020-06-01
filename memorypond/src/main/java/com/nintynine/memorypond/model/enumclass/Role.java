@@ -1,8 +1,7 @@
-package com.nintynine.memorypond.Model.Enum;
+package com.nintynine.memorypond.model.enumclass;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @AllArgsConstructor
 @Getter

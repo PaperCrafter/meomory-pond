@@ -1,7 +1,7 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.Model.Question;
-import com.nintynine.memorypond.Service.QuestionService;
+import com.nintynine.memorypond.model.Question;
+import com.nintynine.memorypond.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

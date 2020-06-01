@@ -1,12 +1,12 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.Model.Projection.CommentProjection;
-import com.nintynine.memorypond.Model.Projection.PostBoardProjection;
-import com.nintynine.memorypond.Model.Projection.PostPageProjection;
-import com.nintynine.memorypond.Model.Post;
-import com.nintynine.memorypond.Model.Request.PostRequest;
-import com.nintynine.memorypond.Service.CommentService;
-import com.nintynine.memorypond.Service.PostService;
+import com.nintynine.memorypond.model.projection.CommentProjection;
+import com.nintynine.memorypond.model.projection.PostBoardProjection;
+import com.nintynine.memorypond.model.projection.PostPageProjection;
+import com.nintynine.memorypond.model.Post;
+import com.nintynine.memorypond.model.request.PostRequest;
+import com.nintynine.memorypond.service.CommentService;
+import com.nintynine.memorypond.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

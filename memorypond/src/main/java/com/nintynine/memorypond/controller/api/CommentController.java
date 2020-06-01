@@ -1,8 +1,9 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.Model.Projection.CommentProjection;
-import com.nintynine.memorypond.Model.Request.CommentRequest;
-import com.nintynine.memorypond.Service.CommentService;
+import com.nintynine.memorypond.model.projection.CommentProjection;
+import com.nintynine.memorypond.model.request.CommentRequest;
+import com.nintynine.memorypond.model.user.CustomUser;
+import com.nintynine.memorypond.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,7 +19,7 @@ public class CommentController{
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CommentProjection createComment(@RequestBody CommentRequest commentRequest,
-                                           @AuthenticationPrincipal User user){
+                                           @AuthenticationPrincipal CustomUser user){
         return commentService.createComment(commentRequest, user);
     }
 }

@@ -1,7 +1,7 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.Model.Member;
-import com.nintynine.memorypond.Service.MemberService;
+import com.nintynine.memorypond.model.Member;
+import com.nintynine.memorypond.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
