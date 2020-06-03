@@ -5,6 +5,7 @@ import com.nintynine.memorypond.model.projection.PostBoardProjection;
 import com.nintynine.memorypond.model.projection.PostPageProjection;
 import com.nintynine.memorypond.model.Post;
 import com.nintynine.memorypond.model.request.PostRequest;
+import com.nintynine.memorypond.model.response.CommentResponse;
 import com.nintynine.memorypond.service.CommentService;
 import com.nintynine.memorypond.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +36,7 @@ public class PostController {
     }
 
     @GetMapping("/{postId}/comments")
-    public List<CommentProjection> getCommentsByPost(@PathVariable("postId") int postId){
+    public List<CommentResponse> getCommentsByPost(@PathVariable("postId") int postId){
         return commentService.getCommentsByPost(postId);
     }
 

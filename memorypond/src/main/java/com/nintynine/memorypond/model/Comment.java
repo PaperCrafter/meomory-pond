@@ -10,12 +10,12 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Comment {
     @Id
-    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
@@ -32,15 +32,4 @@ public class Comment {
     private String createAt;
 
     private String updateAt;
-
-    public Comment(CommentRequest commentRequest){
-        this.member = new Member();
-        this.member.setId(commentRequest.getMemberId());
-        this.post = new Post();
-        this.post.setId(commentRequest.getPostId());
-        this.content = commentRequest.getContent();
-        LocalDateTime localDateTime = LocalDateTime.now();
-        this.createAt = localDateTime.toString();
-        this.updateAt = localDateTime.toString();
-    }
 }

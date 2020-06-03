@@ -18,18 +18,18 @@ public class CommentRequest {
     @NotNull
     private String content;
 
-    @NotEmpty
-    private int postId;
+    @NotNull
+    private Integer postId;
 
     @Setter
-    private int memberId;
+    private Integer memberId;
 
     public static Comment toComment(EntityManager em, CommentRequest commentRequest){
         LocalDateTime localDateTime = LocalDateTime.now();
         return Comment.builder()
-                .member(em.getReference(Member.class, commentRequest.memberId))
+                .member(em.getReference(Member.class, commentRequest.getMemberId()))
                 .post(em.getReference(Post.class, commentRequest.getPostId()))
-                .content(commentRequest.content)
+                .content(commentRequest.getContent())
                 .createAt(localDateTime.toString())
                 .updateAt(localDateTime.toString())
                 .build();
