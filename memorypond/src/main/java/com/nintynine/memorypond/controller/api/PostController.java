@@ -1,9 +1,8 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.model.projection.CommentProjection;
+import com.nintynine.memorypond.model.Post;
 import com.nintynine.memorypond.model.projection.PostBoardProjection;
 import com.nintynine.memorypond.model.projection.PostPageProjection;
-import com.nintynine.memorypond.model.Post;
 import com.nintynine.memorypond.model.request.PostRequest;
 import com.nintynine.memorypond.model.response.CommentResponse;
 import com.nintynine.memorypond.service.CommentService;
@@ -11,6 +10,7 @@ import com.nintynine.memorypond.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +41,7 @@ public class PostController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity createPost(@RequestBody PostRequest postRequest) throws URISyntaxException {
         Post post = postService.createPost(postRequest);
         if(post == null){
@@ -52,9 +53,9 @@ public class PostController {
     }
 
     @DeleteMapping("/{postId}")
-    public ResponseEntity removePost(@PathVariable("postId") int postId) throws URISyntaxException {
+    public ResponseEntity removePost(@PathVariable("postId") int postId){
         if(postService.deletePost(postId)){
-            return ResponseEntity.ok().body("{\"deleted\":\"success\"}");
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
         return ResponseEntity.badRequest().body("{\"deleted\":\"failed\"}");
     }
