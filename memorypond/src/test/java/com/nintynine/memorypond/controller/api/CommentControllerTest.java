@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nintynine.memorypond.model.enumclass.Role;
 import com.nintynine.memorypond.model.projection.CommentProjection;
 import com.nintynine.memorypond.model.request.CommentRequest;
+import com.nintynine.memorypond.model.response.CommentResponse;
+import com.nintynine.memorypond.model.user.CustomUser;
 import com.nintynine.memorypond.service.CommentService;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.jupiter.api.BeforeEach;
@@ -53,13 +55,14 @@ class CommentControllerTest {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    private User mockUser;
+    private CustomUser mockUser;
 
     @BeforeEach
     public void setup() {
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         grantedAuthorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
-        mockUser = new User(
+        mockUser = new CustomUser(
+                1,
                 "paper",
                 "paper",
                 grantedAuthorities);
@@ -85,13 +88,8 @@ class CommentControllerTest {
     @Test
     public void createCommentTest() throws Exception {
         CommentRequest mockCommentRequest = EnhancedRandom.random(CommentRequest.class);
-        ProjectionFactory factory = new SpelAwareProxyProjectionFactory();
-        CommentProjection projection = factory.createProjection(CommentProjection.class);
-        projection.setPostId(1);
-        projection.setId(1);
-        projection.setContent("test completed");
-
-        given(commentService.createComment(any(CommentRequest.class), eq(mockUser))).willReturn(projection);
+        CommentResponse mockCommentResponse = EnhancedRandom.random(CommentResponse.class);
+        given(commentService.createComment(any(CommentRequest.class), eq(mockUser))).willReturn(mockCommentResponse);
 
         mockMvc.perform(post("/api/comments")
                 .content(objectMapper.writeValueAsString(mockCommentRequest))
