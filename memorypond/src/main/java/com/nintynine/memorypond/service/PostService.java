@@ -1,24 +1,25 @@
 package com.nintynine.memorypond.service;
 
-import com.nintynine.memorypond.model.Member;
 import com.nintynine.memorypond.model.Post;
+import com.nintynine.memorypond.model.Question;
 import com.nintynine.memorypond.model.projection.PostBoardProjection;
 import com.nintynine.memorypond.model.projection.PostPageProjection;
-import com.nintynine.memorypond.model.Question;
 import com.nintynine.memorypond.model.request.PostRequest;
+import com.nintynine.memorypond.model.user.CustomUser;
 import com.nintynine.memorypond.repository.CommentRepository;
-import com.nintynine.memorypond.repository.MemberRepsitory;
 import com.nintynine.memorypond.repository.PostRepository;
 import com.nintynine.memorypond.repository.QuestionRepository;
+import com.nintynine.memorypond.util.WeightUtil;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+import javax.persistence.EntityManager;
 import java.util.Optional;
-import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -26,8 +27,10 @@ public class PostService {
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
     private final QuestionRepository questionRepository;
-    private final MemberRepsitory memberRepsitory;
 
+    private final EntityManager entityManager;
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Transactional(readOnly = true)
     public Page<PostPageProjection> getPostList(Pageable pageable){
@@ -52,35 +55,19 @@ public class PostService {
 
 
     @Transactional
-    public Post createPost(PostRequest postRequest){
-        Optional<Member> member = memberRepsitory.findByUsername(postRequest.getUsername());
+    public Post createPost(PostRequest postRequest, CustomUser user){
         Optional<Question> question = questionRepository.findById(postRequest.getQuestionId());
-        LocalDateTime currentTime = LocalDateTime.now();
+        int weight = WeightUtil.calcWeight(question.get().getWeight(), postRequest.getComment().length());
+        postRequest.setMemberId(user.getUserId());
+        postRequest.setWeight(weight);
 
-        int weight = calcWeight(question.get().getWeight(), postRequest.getComment().length());
-        Post post = Post.builder()
-                .content(postRequest.getComment())
-                .member(member.get())
-                .weight(weight)
-                .question(question.get())
-                .createAt(currentTime.toString())
-                .updateAt(currentTime.toString())
-                .build();
-
+        Post post = PostRequest.toPost(entityManager, postRequest);
         return postRepository.save(post);
     }
 
-    private int calcWeight(int defaultWeight, int stringLength){
-        Random random = new Random();
-        int weight = defaultWeight + stringLength * (random.nextInt(1) + 1);
-        weight = Math.min(weight, 600);
-        return weight;
-    }
-
     @Transactional
-    public boolean deletePost(int postId){
+    public void deletePost(int postId){
         commentRepository.deleteAllByPostId(postId);
         postRepository.deleteById(postId);
-        return true;
     }
 }

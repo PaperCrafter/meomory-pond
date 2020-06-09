@@ -73,8 +73,7 @@ PostContent.prototype = {
             evt.preventDefault();
             var xhr = new XMLHttpRequest();
             xhr.onload = function(){
-                var data = JSON.parse(xhr.responseText);
-                if(xhr.status === 200){
+                if(xhr.status === 204){
                     location.href='/main';
                 }else{
                     alert("삭제에 실패하였습니다.");

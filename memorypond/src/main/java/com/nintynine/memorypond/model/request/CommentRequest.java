@@ -25,13 +25,13 @@ public class CommentRequest {
     private Integer memberId;
 
     public static Comment toComment(EntityManager em, CommentRequest commentRequest){
-        LocalDateTime localDateTime = LocalDateTime.now();
+        LocalDateTime requestedTime = LocalDateTime.now();
         return Comment.builder()
                 .member(em.getReference(Member.class, commentRequest.getMemberId()))
                 .post(em.getReference(Post.class, commentRequest.getPostId()))
                 .content(commentRequest.getContent())
-                .createAt(localDateTime.toString())
-                .updateAt(localDateTime.toString())
+                .createAt(requestedTime.toString())
+                .updateAt(requestedTime.toString())
                 .build();
     }
 }
