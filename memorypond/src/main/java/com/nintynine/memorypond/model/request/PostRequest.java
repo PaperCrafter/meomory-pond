@@ -26,13 +26,13 @@ public class PostRequest {
     @Setter
     private int weight;
 
-    public static Post toPost(EntityManager em, PostRequest postRequest){
+    public static Post toPost(PostRequest postRequest){
         LocalDateTime requestedTime = LocalDateTime.now();
         return Post.builder()
                 .content(postRequest.getComment())
                 .weight(postRequest.getWeight())
-                .member(em.getReference(Member.class, postRequest.getMemberId()))
-                .question(em.getReference(Question.class, postRequest.getQuestionId()))
+                .member(new Member(postRequest.getMemberId()))
+                .question(new Question(postRequest.getQuestionId()))
                 .createAt(requestedTime.toString())
                 .updateAt(requestedTime.toString())
                 .build();

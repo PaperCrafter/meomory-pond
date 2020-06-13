@@ -9,10 +9,8 @@ import com.nintynine.memorypond.model.user.CustomUser;
 import com.nintynine.memorypond.repository.CommentRepository;
 import com.nintynine.memorypond.repository.PostRepository;
 import com.nintynine.memorypond.repository.QuestionRepository;
-import com.nintynine.memorypond.util.WeightUtil;
+import com.nintynine.memorypond.util.WeightUtils;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -27,10 +25,6 @@ public class PostService {
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
     private final QuestionRepository questionRepository;
-
-    private final EntityManager entityManager;
-
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Transactional(readOnly = true)
     public Page<PostPageProjection> getPostList(Pageable pageable){
@@ -57,11 +51,11 @@ public class PostService {
     @Transactional
     public Post createPost(PostRequest postRequest, CustomUser user){
         Optional<Question> question = questionRepository.findById(postRequest.getQuestionId());
-        int weight = WeightUtil.calcWeight(question.get().getWeight(), postRequest.getComment().length());
+        int weight = WeightUtils.calcWeight(question.get().getWeight(), postRequest.getComment().length());
         postRequest.setMemberId(user.getUserId());
         postRequest.setWeight(weight);
 
-        Post post = PostRequest.toPost(entityManager, postRequest);
+        Post post = PostRequest.toPost(postRequest);
         return postRepository.save(post);
     }
 

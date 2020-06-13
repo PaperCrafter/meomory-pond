@@ -20,4 +20,8 @@ public class Question {
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn
     private Category category;
+
+    public Question(int id){
+        this.id = id;
+    }
 }

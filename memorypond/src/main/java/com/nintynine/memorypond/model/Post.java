@@ -33,6 +33,10 @@ public class Post {
     @JoinColumn
     private Question question;
 
+    public Post(int id){
+        this.id = id;
+    }
+
     public Post(String content, String createAt, String updateAt, Member member, Question question) {
         this.content = content;
         this.createAt = createAt;

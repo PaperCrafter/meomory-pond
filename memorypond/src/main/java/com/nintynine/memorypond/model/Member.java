@@ -1,5 +1,6 @@
 package com.nintynine.memorypond.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,12 +38,7 @@ public class Member {
 //
 //    @OneToMany(mappedBy = "member")
 //    private List<Like> likes = new ArrayList<Like>();
-
-    public Member(String username, String password, String createAt, String updateAt, boolean hasVisited) {
-        this.username = username;
-        this.password = password;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
-        this.hasVisited = hasVisited;
+    public Member(int id){
+        this.id = id;
     }
 }

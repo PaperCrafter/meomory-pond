@@ -1,10 +1,7 @@
 package com.nintynine.memorypond.model;
 
 import com.nintynine.memorypond.model.request.CommentRequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,14 +19,16 @@ public class Comment {
     private String content;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn
+    @JoinColumn(name = "memberId")
     private Member member;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn
+    @JoinColumn(name = "postId")
     private Post post;
 
+    @Setter
     private String createAt;
 
+    @Setter
     private String updateAt;
 }
