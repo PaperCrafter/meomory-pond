@@ -1,13 +1,16 @@
 package com.nintynine.memorypond.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +21,6 @@ public class Question {
     private int weight;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn
     private Category category;
 
     public Question(int id){

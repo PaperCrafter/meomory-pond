@@ -5,6 +5,7 @@ import com.nintynine.memorypond.model.Question;
 import com.nintynine.memorypond.model.projection.PostBoardProjection;
 import com.nintynine.memorypond.model.projection.PostPageProjection;
 import com.nintynine.memorypond.model.request.PostRequest;
+import com.nintynine.memorypond.model.response.PostResponse;
 import com.nintynine.memorypond.model.user.CustomUser;
 import com.nintynine.memorypond.repository.CommentRepository;
 import com.nintynine.memorypond.repository.PostRepository;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,19 +29,21 @@ public class PostService {
     private final QuestionRepository questionRepository;
 
     @Transactional(readOnly = true)
-    public Page<PostPageProjection> getPostList(Pageable pageable){
+    public Page<PostResponse> getPostList(Pageable pageable){
         try{
             if(pageable.getPageSize() > 10)
                 throw new IllegalArgumentException();
         }catch(IllegalArgumentException ex){
             ex.printStackTrace();
         }
-        return postRepository.findAllBy(pageable);
+        Page<Post> postPage = postRepository.findAllBy(pageable);
+        return postPage.map((entity)-> PostResponse.of(entity));
     }
 
     @Transactional(readOnly = true)
-    public PostBoardProjection getPost(int postId) {
-        return postRepository.findAllById(postId).get(0);
+    public PostResponse getPost(int postId) {
+        Post postResponse = postRepository.findById(postId).get();
+        return PostResponse.of(postResponse);
     }
 
     @Transactional(readOnly = true)

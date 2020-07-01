@@ -5,6 +5,7 @@ import com.nintynine.memorypond.model.projection.PostBoardProjection;
 import com.nintynine.memorypond.model.projection.PostPageProjection;
 import com.nintynine.memorypond.model.request.PostRequest;
 import com.nintynine.memorypond.model.response.CommentResponse;
+import com.nintynine.memorypond.model.response.PostResponse;
 import com.nintynine.memorypond.model.user.CustomUser;
 import com.nintynine.memorypond.service.CommentService;
 import com.nintynine.memorypond.service.PostService;
@@ -28,12 +29,12 @@ public class PostController {
     private final CommentService commentService;
 
     @GetMapping
-    public Page<PostPageProjection> getPosts(Pageable pageable){
+    public Page<PostResponse> getPosts(Pageable pageable){
         return postService.getPostList(pageable);
     }
 
     @GetMapping("/{postId}")
-    public PostBoardProjection getPosts(@PathVariable("postId") int postId){
+    public PostResponse getPosts(@PathVariable("postId") int postId){
         return postService.getPost(postId);
     }
 
