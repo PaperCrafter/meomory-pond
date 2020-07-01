@@ -1,17 +1,17 @@
 package com.nintynine.memorypond.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,32 +26,20 @@ public class Post {
     private String updateAt;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn
+    @JoinColumn(name = "QUESTION_ID")
     private Question question;
+
+    @OneToMany(mappedBy = "post")
+    private List<Like> likeList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "post")
+    private List<Comment> commentList = new ArrayList<>();
 
     public Post(int id){
         this.id = id;
-    }
-
-    public Post(String content, String createAt, String updateAt, Member member, Question question) {
-        this.content = content;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
-        this.member = member;
-        this.question = question;
-    }
-
-    public Post(int id, String content, int weight, String createAt, String updateAt, Member member, Question question) {
-        this.id = id;
-        this.content = content;
-        this.weight = weight;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
-        this.member = member;
-        this.question = question;
     }
 }

@@ -79,7 +79,9 @@ class CommentControllerTest {
 
         MockitoAnnotations.initMocks(this);
         commentController = new CommentController(commentService);
-        mockMvc = MockMvcBuilders.standaloneSetup(commentController).setCustomArgumentResolvers(putAuthenticationPrincipal).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(commentController)
+                .setCustomArgumentResolvers(putAuthenticationPrincipal)
+                .build();
     }
 
     @Test

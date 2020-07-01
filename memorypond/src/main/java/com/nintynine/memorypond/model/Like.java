@@ -14,10 +14,10 @@ public class Like {
     int id;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn
+    @JoinColumn(name = "POST_ID")
     private Post post;
 }

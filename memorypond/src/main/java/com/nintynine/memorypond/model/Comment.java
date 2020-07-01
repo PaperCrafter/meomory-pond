@@ -19,11 +19,11 @@ public class Comment {
     private String content;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "memberId")
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "postId")
+    @JoinColumn(name = "POST_ID")
     private Post post;
 
     @Setter

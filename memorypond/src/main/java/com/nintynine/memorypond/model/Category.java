@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -14,4 +16,7 @@ public class Category {
     int id;
 
     String categoryName;
+
+    @OneToMany(mappedBy = "category")
+    private List<Question> categoryList = new ArrayList<>();
 }

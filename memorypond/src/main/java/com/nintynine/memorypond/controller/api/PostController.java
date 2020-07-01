@@ -1,10 +1,8 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.model.Post;
-import com.nintynine.memorypond.model.projection.PostBoardProjection;
-import com.nintynine.memorypond.model.projection.PostPageProjection;
 import com.nintynine.memorypond.model.request.PostRequest;
 import com.nintynine.memorypond.model.response.CommentResponse;
+import com.nintynine.memorypond.model.response.PostResponse;
 import com.nintynine.memorypond.model.user.CustomUser;
 import com.nintynine.memorypond.service.CommentService;
 import com.nintynine.memorypond.service.PostService;
@@ -28,12 +26,12 @@ public class PostController {
     private final CommentService commentService;
 
     @GetMapping
-    public Page<PostPageProjection> getPosts(Pageable pageable){
+    public Page<PostResponse> getPosts(Pageable pageable){
         return postService.getPostList(pageable);
     }
 
     @GetMapping("/{postId}")
-    public PostBoardProjection getPosts(@PathVariable("postId") int postId){
+    public PostResponse getPost(@PathVariable("postId") int postId){
         return postService.getPost(postId);
     }
 
@@ -46,13 +44,12 @@ public class PostController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity createPost(@RequestBody PostRequest postRequest,
                                      @AuthenticationPrincipal CustomUser user) throws URISyntaxException {
-        Post post = postService.createPost(postRequest, user);
-        if(post == null){
+        PostResponse postResponse = postService.createPost(postRequest, user);
+        if(postResponse == null){
             return ResponseEntity.badRequest().body("{\"msg\":\"failed to create\"}");
         }
         URI url = new URI("/api/posts");
-        post.setMember(null);
-        return ResponseEntity.created(url).body(post);
+        return ResponseEntity.created(url).body(postResponse);
     }
 
     @DeleteMapping("/{postId}")
