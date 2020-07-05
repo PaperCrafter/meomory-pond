@@ -1,10 +1,12 @@
 package com.nintynine.memorypond.service;
 
+import com.nintynine.memorypond.exception.ResourceNotFoundException;
 import com.nintynine.memorypond.model.Comment;
 import com.nintynine.memorypond.model.request.CommentRequest;
 import com.nintynine.memorypond.model.response.CommentResponse;
 import com.nintynine.memorypond.model.user.CustomUser;
 import com.nintynine.memorypond.repository.CommentRepository;
+import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,9 +29,14 @@ public class CommentService {
 
     @Transactional
     public CommentResponse createComment(CommentRequest commentRequest, CustomUser user) {
-        commentRequest.setMemberId(user.getUserId());
-        Comment comment = CommentRequest.toComment(commentRequest);
-        Comment commetResponse = commentRepository.save(comment);
+        Comment commetResponse;
+        try {
+            commentRequest.setMemberId(user.getUserId());
+            Comment comment = CommentRequest.toComment(commentRequest);
+            commetResponse = commentRepository.save(comment);
+        }catch (Exception e){
+            throw new ResourceNotFoundException("게시글이 존재하지 않습니다.");
+        }
         return CommentResponse.of(commetResponse);
     }
 }

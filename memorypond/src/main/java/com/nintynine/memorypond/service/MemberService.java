@@ -1,5 +1,8 @@
 package com.nintynine.memorypond.service;
 
+import com.nintynine.memorypond.MemorypondApplication;
+import com.nintynine.memorypond.exception.DuplicatedUserException;
+import com.nintynine.memorypond.exception.UserNotFoundException;
 import com.nintynine.memorypond.model.Member;
 import com.nintynine.memorypond.repository.MemberRepsitory;
 import lombok.NonNull;
@@ -18,11 +21,9 @@ public class MemberService {
 
     @Transactional(readOnly = true)
     public Member getMember(String username){
-        Optional<Member> memberOptional = memberRepsitory.findByUsername(username);
-        if(memberOptional.isPresent()){
-            return memberOptional.get();
-        }
-        return null;
+        Member member = memberRepsitory.findByUsername(username)
+                .orElseThrow(()->new UserNotFoundException("No user existed named " + username));
+        return member;
     }
 
     @Transactional
@@ -31,7 +32,13 @@ public class MemberService {
         member.setCreateAt(currentDateTime);
         member.setUpdateAt(currentDateTime);
         member.setHasVisited(false);
-        return memberRepsitory.save(member);
+        Optional<Member> check = memberRepsitory.findByUsername(member.getUsername());
+
+        if(memberRepsitory.findByUsername(member.getUsername()).get() != null)
+            throw new DuplicatedUserException();
+
+        Member createdMember = memberRepsitory.save(member);
+        return createdMember;
     }
 
     @Transactional

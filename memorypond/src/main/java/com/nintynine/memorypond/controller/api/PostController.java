@@ -44,12 +44,8 @@ public class PostController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity createPost(@RequestBody PostRequest postRequest,
                                      @AuthenticationPrincipal CustomUser user) throws URISyntaxException {
-        PostResponse postResponse = postService.createPost(postRequest, user);
-        if(postResponse == null){
-            return ResponseEntity.badRequest().body("{\"msg\":\"failed to create\"}");
-        }
-        URI url = new URI("/api/posts");
-        return ResponseEntity.created(url).body(postResponse);
+        postService.createPost(postRequest, user);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{postId}")
