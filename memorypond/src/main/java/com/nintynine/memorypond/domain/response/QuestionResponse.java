@@ -1,12 +1,10 @@
-package com.nintynine.memorypond.model.response;
+package com.nintynine.memorypond.domain.response;
 
-import com.nintynine.memorypond.model.Question;
+import com.nintynine.memorypond.domain.entity.Question;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Builder

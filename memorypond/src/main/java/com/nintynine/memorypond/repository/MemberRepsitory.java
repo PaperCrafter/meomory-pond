@@ -1,6 +1,6 @@
 package com.nintynine.memorypond.repository;
 
-import com.nintynine.memorypond.model.Member;
+import com.nintynine.memorypond.domain.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

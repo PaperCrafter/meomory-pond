@@ -1,6 +1,6 @@
 package com.nintynine.memorypond.repository;
 
-import com.nintynine.memorypond.model.Category;
+import com.nintynine.memorypond.domain.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

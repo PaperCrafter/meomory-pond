@@ -1,10 +1,10 @@
 package com.nintynine.memorypond.controller.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nintynine.memorypond.model.enumclass.Role;
-import com.nintynine.memorypond.model.request.CommentRequest;
-import com.nintynine.memorypond.model.response.CommentResponse;
-import com.nintynine.memorypond.model.user.CustomUser;
+import com.nintynine.memorypond.domain.value.Role;
+import com.nintynine.memorypond.domain.request.CommentRequest;
+import com.nintynine.memorypond.domain.response.CommentResponse;
+import com.nintynine.memorypond.domain.security.CustomUser;
 import com.nintynine.memorypond.service.CommentService;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,5 +1,6 @@
-package com.nintynine.memorypond.model;
+package com.nintynine.memorypond.domain.entity;
 
+import com.nintynine.memorypond.domain.value.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ import java.util.List;
         name="USERNAME_UNIQUE",
         columnNames = {"username"}
 )})
-public class Member {
+public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -27,9 +28,8 @@ public class Member {
 
     private String password;
 
-    private String createAt;
-
-    private String updateAt;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     private Boolean hasVisited;
 

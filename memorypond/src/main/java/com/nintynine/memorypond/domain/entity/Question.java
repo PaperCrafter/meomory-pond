@@ -1,4 +1,4 @@
-package com.nintynine.memorypond.model;
+package com.nintynine.memorypond.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

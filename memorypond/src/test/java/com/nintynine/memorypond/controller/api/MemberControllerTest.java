@@ -1,7 +1,7 @@
 package com.nintynine.memorypond.controller.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nintynine.memorypond.model.Member;
+import com.nintynine.memorypond.domain.entity.Member;
 import com.nintynine.memorypond.service.MemberService;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.jupiter.api.BeforeEach;

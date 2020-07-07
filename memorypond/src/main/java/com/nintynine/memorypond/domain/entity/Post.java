@@ -1,8 +1,9 @@
-package com.nintynine.memorypond.model;
+package com.nintynine.memorypond.domain.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Post {
+public class Post extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -20,10 +21,6 @@ public class Post {
     private String content;
 
     private int weight;
-
-    private String createAt;
-
-    private String updateAt;
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "MEMBER_ID")

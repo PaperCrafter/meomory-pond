@@ -1,6 +1,6 @@
 package com.nintynine.memorypond.service;
 
-import com.nintynine.memorypond.model.response.QuestionResponse;
+import com.nintynine.memorypond.domain.response.QuestionResponse;
 import com.nintynine.memorypond.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

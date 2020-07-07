@@ -1,16 +1,12 @@
-package com.nintynine.memorypond.model.request;
+package com.nintynine.memorypond.domain.request;
 
-import com.nintynine.memorypond.model.Comment;
-import com.nintynine.memorypond.model.Member;
-import com.nintynine.memorypond.model.Post;
-import com.nintynine.memorypond.util.ModelMapperUtils;
+import com.nintynine.memorypond.domain.entity.Comment;
+import com.nintynine.memorypond.domain.entity.Member;
+import com.nintynine.memorypond.domain.entity.Post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.modelmapper.ModelMapper;
 
-import javax.persistence.EntityManager;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -27,13 +23,10 @@ public class CommentRequest {
     private Integer memberId;
 
     public static Comment toComment(CommentRequest commentRequest){
-        LocalDateTime requestedTime = LocalDateTime.now();
         return Comment.builder()
                 .member(new Member(commentRequest.getMemberId()))
                 .post(new Post(commentRequest.getPostId()))
                 .content(commentRequest.getContent())
-                .createAt(requestedTime.toString())
-                .updateAt(requestedTime.toString())
                 .build();
     }
 }

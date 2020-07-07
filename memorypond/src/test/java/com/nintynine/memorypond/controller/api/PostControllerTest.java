@@ -1,12 +1,10 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nintynine.memorypond.model.enumclass.Role;
-import com.nintynine.memorypond.model.request.PostRequest;
-import com.nintynine.memorypond.model.response.CommentResponse;
-import com.nintynine.memorypond.model.response.PostResponse;
-import com.nintynine.memorypond.model.user.CustomUser;
+import com.nintynine.memorypond.domain.value.Role;
+import com.nintynine.memorypond.domain.response.CommentResponse;
+import com.nintynine.memorypond.domain.response.PostResponse;
+import com.nintynine.memorypond.domain.security.CustomUser;
 import com.nintynine.memorypond.service.CommentService;
 import com.nintynine.memorypond.service.PostService;
 import io.github.benas.randombeans.api.EnhancedRandom;
@@ -20,11 +18,9 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.MethodParameter;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.bind.support.WebDataBinderFactory;

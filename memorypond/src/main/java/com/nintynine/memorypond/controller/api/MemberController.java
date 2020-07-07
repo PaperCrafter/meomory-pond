@@ -1,15 +1,13 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.model.Member;
+import com.nintynine.memorypond.domain.entity.Member;
 import com.nintynine.memorypond.service.MemberService;
-import com.sun.org.apache.regexp.internal.RE;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 
 @RestController

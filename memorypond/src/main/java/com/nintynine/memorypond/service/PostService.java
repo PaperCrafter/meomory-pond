@@ -1,10 +1,10 @@
 package com.nintynine.memorypond.service;
 
-import com.nintynine.memorypond.model.Post;
-import com.nintynine.memorypond.model.Question;
-import com.nintynine.memorypond.model.request.PostRequest;
-import com.nintynine.memorypond.model.response.PostResponse;
-import com.nintynine.memorypond.model.user.CustomUser;
+import com.nintynine.memorypond.domain.entity.Post;
+import com.nintynine.memorypond.domain.entity.Question;
+import com.nintynine.memorypond.domain.request.PostRequest;
+import com.nintynine.memorypond.domain.response.PostResponse;
+import com.nintynine.memorypond.domain.security.CustomUser;
 import com.nintynine.memorypond.repository.CommentRepository;
 import com.nintynine.memorypond.repository.PostRepository;
 import com.nintynine.memorypond.repository.QuestionRepository;

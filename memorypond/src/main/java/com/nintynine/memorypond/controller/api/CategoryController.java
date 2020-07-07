@@ -1,6 +1,7 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.model.Category;
+import com.nintynine.memorypond.domain.entity.Category;
+import com.nintynine.memorypond.domain.response.CategoryResponse;
 import com.nintynine.memorypond.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping("/api/categories")
-    public List<Category> getCategories(){
+    public List<CategoryResponse> getCategories(){
         return categoryService.getCategories();
     }
 }

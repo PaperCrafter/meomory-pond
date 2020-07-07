@@ -1,6 +1,6 @@
 package com.nintynine.memorypond.repository;
 
-import com.nintynine.memorypond.model.Post;
+import com.nintynine.memorypond.domain.entity.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;

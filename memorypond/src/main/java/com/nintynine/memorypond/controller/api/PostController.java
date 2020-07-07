@@ -1,9 +1,9 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.model.request.PostRequest;
-import com.nintynine.memorypond.model.response.CommentResponse;
-import com.nintynine.memorypond.model.response.PostResponse;
-import com.nintynine.memorypond.model.user.CustomUser;
+import com.nintynine.memorypond.domain.request.PostRequest;
+import com.nintynine.memorypond.domain.response.CommentResponse;
+import com.nintynine.memorypond.domain.response.PostResponse;
+import com.nintynine.memorypond.domain.security.CustomUser;
 import com.nintynine.memorypond.service.CommentService;
 import com.nintynine.memorypond.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -42,10 +41,9 @@ public class PostController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity createPost(@RequestBody PostRequest postRequest,
+    public PostResponse createPost(@RequestBody PostRequest postRequest,
                                      @AuthenticationPrincipal CustomUser user) throws URISyntaxException {
-        postService.createPost(postRequest, user);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return postService.createPost(postRequest, user);
     }
 
     @DeleteMapping("/{postId}")

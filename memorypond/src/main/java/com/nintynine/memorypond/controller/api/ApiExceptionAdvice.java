@@ -1,8 +1,8 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.exception.DuplicatedUserException;
-import com.nintynine.memorypond.exception.ResourceNotFoundException;
-import com.nintynine.memorypond.exception.UserNotFoundException;
+import com.nintynine.memorypond.domain.exception.DuplicatedUserException;
+import com.nintynine.memorypond.domain.exception.ResourceNotFoundException;
+import com.nintynine.memorypond.domain.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

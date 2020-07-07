@@ -1,17 +1,20 @@
-package com.nintynine.memorypond.model;
+package com.nintynine.memorypond.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@AllArgsConstructor
+@Getter
+@Builder
 @NoArgsConstructor
-public class Like {
+@AllArgsConstructor
+public class Comment extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+
+    private String content;
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "MEMBER_ID")

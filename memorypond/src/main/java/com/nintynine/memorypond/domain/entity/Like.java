@@ -1,22 +1,17 @@
-package com.nintynine.memorypond.model;
+package com.nintynine.memorypond.domain.entity;
 
-import com.nintynine.memorypond.model.request.CommentRequest;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class Comment {
+@NoArgsConstructor
+public class Like extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-
-    private String content;
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "MEMBER_ID")
@@ -25,10 +20,4 @@ public class Comment {
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "POST_ID")
     private Post post;
-
-    @Setter
-    private String createAt;
-
-    @Setter
-    private String updateAt;
 }

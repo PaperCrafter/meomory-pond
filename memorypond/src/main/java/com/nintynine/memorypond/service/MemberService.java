@@ -1,16 +1,15 @@
 package com.nintynine.memorypond.service;
 
-import com.nintynine.memorypond.MemorypondApplication;
-import com.nintynine.memorypond.exception.DuplicatedUserException;
-import com.nintynine.memorypond.exception.UserNotFoundException;
-import com.nintynine.memorypond.model.Member;
+import com.nintynine.memorypond.domain.entity.Member;
+import com.nintynine.memorypond.domain.exception.DuplicatedUserException;
+import com.nintynine.memorypond.domain.exception.UserNotFoundException;
+import com.nintynine.memorypond.domain.value.Role;
 import com.nintynine.memorypond.repository.MemberRepsitory;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -22,16 +21,14 @@ public class MemberService {
     @Transactional(readOnly = true)
     public Member getMember(String username){
         Member member = memberRepsitory.findByUsername(username)
-                .orElseThrow(()->new UserNotFoundException("No user existed named " + username));
+                .orElseThrow(()->new UserNotFoundException(username));
         return member;
     }
 
     @Transactional
     public Member createMember(Member member){
-        String currentDateTime = LocalDateTime.now().toString();
-        member.setCreateAt(currentDateTime);
-        member.setUpdateAt(currentDateTime);
         member.setHasVisited(false);
+        member.setRole(Role.MEMBER);
         Optional<Member> check = memberRepsitory.findByUsername(member.getUsername());
 
         if(memberRepsitory.findByUsername(member.getUsername()).get() != null)

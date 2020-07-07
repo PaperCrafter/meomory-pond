@@ -1,6 +1,6 @@
-package com.nintynine.memorypond.model.response;
+package com.nintynine.memorypond.domain.response;
 
-import com.nintynine.memorypond.model.Comment;
+import com.nintynine.memorypond.domain.entity.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,8 +29,6 @@ public class CommentResponse {
                 .username(comment.getMember().getUsername())
                 .postId(comment.getPost().getId())
                 .content(comment.getContent())
-                .createAt(comment.getCreateAt())
-                .createAt(comment.getUpdateAt())
                 .build();
     }
 }

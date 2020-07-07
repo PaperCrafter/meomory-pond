@@ -1,6 +1,6 @@
 package com.nintynine.memorypond.controller;
 
-import com.nintynine.memorypond.model.response.PostResponse;
+import com.nintynine.memorypond.domain.response.PostResponse;
 import com.nintynine.memorypond.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

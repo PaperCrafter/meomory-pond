@@ -1,6 +1,6 @@
-package com.nintynine.memorypond.model.response;
+package com.nintynine.memorypond.domain.response;
 
-import com.nintynine.memorypond.model.Post;
+import com.nintynine.memorypond.domain.entity.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,8 +30,6 @@ public class PostResponse {
                 .id(post.getId())
                 .content(post.getContent())
                 .weight(post.getWeight())
-                .createAt(post.getCreateAt())
-                .UpdateAt(post.getUpdateAt())
                 .username(post.getMember().getUsername())
                 .questionName(post.getQuestion().getName())
                 .build();

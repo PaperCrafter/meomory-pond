@@ -1,13 +1,12 @@
 package com.nintynine.memorypond.service;
 
-import com.nintynine.memorypond.model.enumclass.Role;
-import com.nintynine.memorypond.model.Member;
-import com.nintynine.memorypond.model.user.CustomUser;
+import com.nintynine.memorypond.domain.value.Role;
+import com.nintynine.memorypond.domain.entity.Member;
+import com.nintynine.memorypond.domain.security.CustomUser;
 import com.nintynine.memorypond.repository.MemberRepsitory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

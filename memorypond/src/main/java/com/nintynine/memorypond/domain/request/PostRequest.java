@@ -1,11 +1,10 @@
-package com.nintynine.memorypond.model.request;
+package com.nintynine.memorypond.domain.request;
 
-import com.nintynine.memorypond.model.Member;
-import com.nintynine.memorypond.model.Post;
-import com.nintynine.memorypond.model.Question;
+import com.nintynine.memorypond.domain.entity.Member;
+import com.nintynine.memorypond.domain.entity.Post;
+import com.nintynine.memorypond.domain.entity.Question;
 import lombok.*;
 
-import javax.persistence.EntityManager;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -27,14 +26,11 @@ public class PostRequest {
     private int weight;
 
     public static Post toPost(PostRequest postRequest){
-        LocalDateTime requestedTime = LocalDateTime.now();
         return Post.builder()
                 .content(postRequest.getComment())
                 .weight(postRequest.getWeight())
                 .member(new Member(postRequest.getMemberId()))
                 .question(new Question(postRequest.getQuestionId()))
-                .createAt(requestedTime.toString())
-                .updateAt(requestedTime.toString())
                 .build();
     }
 }

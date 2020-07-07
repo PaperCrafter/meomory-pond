@@ -1,6 +1,6 @@
 package com.nintynine.memorypond.controller.api;
 
-import com.nintynine.memorypond.model.response.QuestionResponse;
+import com.nintynine.memorypond.domain.response.QuestionResponse;
 import com.nintynine.memorypond.service.QuestionService;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.jupiter.api.BeforeEach;

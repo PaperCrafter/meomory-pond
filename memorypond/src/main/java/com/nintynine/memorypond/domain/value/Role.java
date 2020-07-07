@@ -1,4 +1,4 @@
-package com.nintynine.memorypond.model.enumclass;
+package com.nintynine.memorypond.domain.value;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum Role {
-    MEMBER("member"),
-    ADMIN("admin");
+    MEMBER("ROLE_MEMBER"),
+    ADMIN("ROLE_ADMIN");
     private String value;
 }

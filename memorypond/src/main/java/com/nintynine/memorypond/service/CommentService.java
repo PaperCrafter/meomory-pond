@@ -1,17 +1,15 @@
 package com.nintynine.memorypond.service;
 
-import com.nintynine.memorypond.exception.ResourceNotFoundException;
-import com.nintynine.memorypond.model.Comment;
-import com.nintynine.memorypond.model.request.CommentRequest;
-import com.nintynine.memorypond.model.response.CommentResponse;
-import com.nintynine.memorypond.model.user.CustomUser;
+import com.nintynine.memorypond.domain.exception.ResourceNotFoundException;
+import com.nintynine.memorypond.domain.entity.Comment;
+import com.nintynine.memorypond.domain.request.CommentRequest;
+import com.nintynine.memorypond.domain.response.CommentResponse;
+import com.nintynine.memorypond.domain.security.CustomUser;
 import com.nintynine.memorypond.repository.CommentRepository;
-import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.stream.Collectors;
 
