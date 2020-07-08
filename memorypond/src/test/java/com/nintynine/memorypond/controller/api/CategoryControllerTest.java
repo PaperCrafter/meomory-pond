@@ -1,6 +1,7 @@
 package com.nintynine.memorypond.controller.api;
 
 import com.nintynine.memorypond.domain.entity.Category;
+import com.nintynine.memorypond.domain.response.CategoryResponse;
 import com.nintynine.memorypond.service.CategoryService;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.jupiter.api.BeforeEach;
@@ -44,7 +45,7 @@ class CategoryControllerTest {
 
     @Test
     public void getCategoriesTest() throws Exception {
-        List<Category> givenCategories = EnhancedRandom.randomListOf(4, Category.class);
+        List<CategoryResponse> givenCategories = EnhancedRandom.randomListOf(4, CategoryResponse.class);
         given(categoryService.getCategories()).willReturn(givenCategories);
 
         mockMvc.perform(get("/api/categories").accept(MediaType.APPLICATION_JSON))
