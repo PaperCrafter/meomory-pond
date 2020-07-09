@@ -1,0 +1,12 @@
+INSERT INTO question (id, name, weight, category_id) VALUES (1,'할까 말까 망설여지는 일',100,1);
+INSERT INTO question (id, name, weight, category_id) VALUES (2,'고치고 싶은 나의 습관',120,1);
+INSERT INTO question (id, name, weight, category_id) VALUES (3,'나에게 해주고 싶은 말',140,1);
+INSERT INTO question (id, name, weight, category_id) VALUES (4,'응원이 필요한 나의 목표',160,1);
+INSERT INTO question (id, name, weight, category_id) VALUES (5,'누군가에게 전하고 싶은 말',200,2);
+INSERT INTO question (id, name, weight, category_id) VALUES (6,'속 시원하게 터놓고 싶은 말',220,2);
+INSERT INTO question (id, name, weight, category_id) VALUES (7,'최근 있었던 일 중 신경 쓰였던 일',240,2);
+INSERT INTO question (id, name, weight, category_id) VALUES (8,'도저히 풀리지 않는 고민',260,2);
+INSERT INTO question (id, name, weight, category_id) VALUES (9,'다시 돌아가고 싶은 순간',300,3);
+INSERT INTO question (id, name, weight, category_id) VALUES (10,'하지 말 걸 싶었던 나의 말이나 행동',320,3);
+INSERT INTO question (id, name, weight, category_id) VALUES (11,'나를 힘들게 만드는 것',340,3);
+INSERT INTO question (id, name, weight, category_id) VALUES (12,'살면서 가장 슬펐던 일',360,3);
