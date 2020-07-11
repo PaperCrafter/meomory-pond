@@ -16,4 +16,4 @@ ARG JAR_FILE=build/libs/memorypond-1.0.0-SNAPSHOT.jar
 ADD ${JAR_FILE} memorypond.jar
 
 # Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/memorypond.jar"]
+ENTRYPOINT ["java","-Dspring.profiles.active=production","-jar","/memorypond.jar"]

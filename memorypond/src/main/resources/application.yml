@@ -1,0 +1,22 @@
+spring:
+  thymeleaf:
+    prefix: classpath:templates/view/
+    suffix: .html
+
+management:
+  server:
+    port: 18081
+    address: 127.0.0.1
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+
+server:
+  port: 8080

@@ -1,5 +1,6 @@
 package com.nintynine.memorypond.config;
 
+import com.nintynine.memorypond.domain.value.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,9 +33,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                             "/main",
                             "/login",
                             "/welcome",
-                            "/post/**"
+                            "/post/**",
+                            "/actuator/**"
                             ).permitAll()
-                    .antMatchers("/admin").hasRole("ADMIN")
+                    .antMatchers("/admin").hasRole(Role.ADMIN.toString())
                 .anyRequest().authenticated()
                     .and()
                 .formLogin()
