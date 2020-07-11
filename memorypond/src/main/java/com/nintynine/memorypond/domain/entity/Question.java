@@ -5,7 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+<<<<<<< HEAD:memorypond/src/main/java/com/nintynine/memorypond/domain/entity/Question.java
 import java.util.ArrayList;
+=======
+>>>>>>> 8dbe5ea692db25efb21a0eb2658d196666f53a63:memorypond/src/main/java/com/nintynine/memorypond/model/Question.java
 import java.util.List;
 
 @Entity
