@@ -1,20 +1,10 @@
 package com.nintynine.memorypond.service;
 
-<<<<<<< HEAD
 import com.nintynine.memorypond.domain.entity.Post;
 import com.nintynine.memorypond.domain.entity.Question;
 import com.nintynine.memorypond.domain.request.PostRequest;
 import com.nintynine.memorypond.domain.response.PostResponse;
 import com.nintynine.memorypond.domain.security.CustomUser;
-=======
-import com.nintynine.memorypond.model.Post;
-import com.nintynine.memorypond.model.Question;
-import com.nintynine.memorypond.model.projection.PostBoardProjection;
-import com.nintynine.memorypond.model.projection.PostPageProjection;
-import com.nintynine.memorypond.model.request.PostRequest;
-import com.nintynine.memorypond.model.response.PostResponse;
-import com.nintynine.memorypond.model.user.CustomUser;
->>>>>>> 8dbe5ea692db25efb21a0eb2658d196666f53a63
 import com.nintynine.memorypond.repository.CommentRepository;
 import com.nintynine.memorypond.repository.PostRepository;
 import com.nintynine.memorypond.repository.QuestionRepository;
@@ -25,11 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
-=======
-import javax.persistence.EntityManager;
-import java.util.List;
->>>>>>> 8dbe5ea692db25efb21a0eb2658d196666f53a63
 import java.util.Optional;
 
 @Service
@@ -47,11 +32,7 @@ public class PostService {
         }catch(IllegalArgumentException ex){
             ex.printStackTrace();
         }
-<<<<<<< HEAD
         Page<Post> postPage = postRepository.findAll(pageable);
-=======
-        Page<Post> postPage = postRepository.findAllBy(pageable);
->>>>>>> 8dbe5ea692db25efb21a0eb2658d196666f53a63
         return postPage.map((entity)-> PostResponse.of(entity));
     }
 

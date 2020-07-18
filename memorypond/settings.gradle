@@ -1,1 +1,3 @@
 rootProject.name = 'memorypond'
+include 'memorypond-web'
+

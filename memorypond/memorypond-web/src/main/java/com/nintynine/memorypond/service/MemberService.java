@@ -29,9 +29,7 @@ public class MemberService {
     public Member createMember(Member member){
         member.setHasVisited(false);
         member.setRole(Role.MEMBER);
-        Optional<Member> check = memberRepsitory.findByUsername(member.getUsername());
-
-        if(memberRepsitory.findByUsername(member.getUsername()).get() != null)
+        if(memberRepsitory.findByUsername(member.getUsername()).isPresent())
             throw new DuplicatedUserException();
 
         Member createdMember = memberRepsitory.save(member);
