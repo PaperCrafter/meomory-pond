@@ -16,36 +16,64 @@ This project is graduation project of team 99. Concept of this project is to con
 3. unity client(will be uploaded)
 
 ## Dependencies
+
+#### Dependencies for spring boot server
 ```
 Spring boot
 Spring Security
 JPA
 thymeleaf
 junit
+docker
 ```
 
 ## How to use
 
+#### Running methods per environment
+- run with develop server with docker (recommended)
 ```
 0. go to javascript file and edit ip running socket server
 1. Spring boot Back-end web server / api server
 ./gradlew --exclude-task test;
-2. change directory to build/libs and run jar background
-nohup java -jar ~~.jar &
+2. run docker compose
+docuer-compose -f docker-compose.develop.yml -d
 ```
+
+- run with develop server without docker (runwith jar)
+```
+0. go to javascript file and edit ip running socket server
+1. Spring boot Back-end web server / api server
+./gradlew --exclude-task test;
+2. run docker compose for development environment
+docuer-compose -f docker-compose.develop.yml -d
+```
+
+- run with production server
+```
+0. go to javascript file and edit ip running socket server
+1. Spring boot Back-end web server / api server
+./gradlew --exclude-task test;
+2. run docker compose for production environment
+docuer-compose -f docker-compose.production.yml -d
+```
+
 
 ## Trouble shooting
 
+1. gradlew permission problem
 ```
-1. if you encountered permission problem, use chmode to change permission of gradlew
-2. 
+if you encountered permission problem, use chmode to change permission of gradlew
+ex) chmod 755 
 ```
 
 ## TODO
 
+#### Things left to complete this project
 ```
 1. implement test codes
 2. CICD
+3. multi-module setting
+4. admin-page
 ```
 
 ## Preview
@@ -55,6 +83,7 @@ nohup java -jar ~~.jar &
 ![flow chart final](https://user-images.githubusercontent.com/37043014/82179398-36bfe800-9919-11ea-823c-0e6969e86cac.png)
 
 -UI Image-
+
 |welcome page|login page|register page|
 |-------|------|-------|
 |<img width="195" alt="welcomepage" src="https://user-images.githubusercontent.com/37043014/82176566-18a2b980-9912-11ea-8982-723f8dd7a3b8.png">|<img width="200" alt="loginpage" src="https://user-images.githubusercontent.com/37043014/82176595-2fe1a700-9912-11ea-9edf-7dadc399b797.png">|<img width="201" alt="register" src="https://user-images.githubusercontent.com/37043014/82177119-9d420780-9913-11ea-8650-f142da537576.png">|
