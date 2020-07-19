@@ -45,7 +45,7 @@ docuer-compose -f docker-compose.develop.yml -d
 1. Spring boot Back-end web server / api server
 ./gradlew --exclude-task test;
 2. run docker compose for development environment
-docuer-compose -f docker-compose.develop.yml -d
+nohup java -jar ~~.jar &
 ```
 
 - run with production server
@@ -53,7 +53,9 @@ docuer-compose -f docker-compose.develop.yml -d
 0. go to javascript file and edit ip running socket server
 1. Spring boot Back-end web server / api server
 ./gradlew --exclude-task test;
-2. run docker compose for production environment
+2. edit "docker-compose.production.yml"
+edit informations for your own database
+3. run docker compose for production environment
 docuer-compose -f docker-compose.production.yml -d
 ```
 
