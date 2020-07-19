@@ -1,0 +1,13 @@
+{
+	"ulid": "01EDKQBA2CRJQ1ABBH797X4VEX",
+	"minTime": 1595152800000,
+	"maxTime": 1595160000000,
+	"stats": {},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01EDKQBA2CRJQ1ABBH797X4VEX"
+		]
+	},
+	"version": 1
+}

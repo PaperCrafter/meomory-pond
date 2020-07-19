@@ -3,12 +3,18 @@ graduation project of team 99
 
 ## Project discription
 
+#### About proejct
 This project is graduation project of team 99. Concept of this project is to connect art with web community service. If you create some posts at the web-app, lotus will be created at unity client and it will spawn some texts with post content. and If you create some comments at the web-app related with posts, A fish will be created at unity client and eat some texts spawend from the related lotus(post).
 
 ## Project Architecture
+#### Architecture diagram
 <img width="474" alt="architecture" src="https://user-images.githubusercontent.com/37043014/82174670-5bfa2980-990c-11ea-95e1-b6db29ec1b1a.png">
 
-## Requirement
+#### Flow chart
+![flow chart final](https://user-images.githubusercontent.com/37043014/82179398-36bfe800-9919-11ea-823c-0e6969e86cac.png)
+
+
+## Requirements
 
 1. Spring boot Back-end web server / api server
 2. [node.js socket server](https://github.com/PaperCrafter/memory-pond-socket-server) 
@@ -25,12 +31,13 @@ JPA
 thymeleaf
 junit
 docker
+
 ```
 
 ## How to use
 
-#### Running methods per environment
-- run with develop server with docker (recommended)
+#### 1. Running methods per environment
+- Run with develop server with docker (recommended)
 ```
 0. go to javascript file and edit ip running socket server
 1. Spring boot Back-end web server / api server
@@ -39,7 +46,7 @@ docker
 docuer-compose -f docker-compose.develop.yml -d
 ```
 
-- run with develop server without docker (runwith jar)
+- Run with develop server without docker (runwith jar)
 ```
 0. go to javascript file and edit ip running socket server
 1. Spring boot Back-end web server / api server
@@ -48,7 +55,7 @@ docuer-compose -f docker-compose.develop.yml -d
 nohup java -jar ~~.jar &
 ```
 
-- run with production server
+- Run with production server
 ```
 0. go to javascript file and edit ip running socket server
 1. Spring boot Back-end web server / api server
@@ -59,10 +66,23 @@ edit informations for your own database
 docuer-compose -f docker-compose.production.yml -d
 ```
 
+#### 2. Running admin environment
+
+- Prometheus
+```
+1. goto "docker/prometheus/config/prometheus.yml" and edit configuration 
+2. run server and access to "http://localhost:9090/targets"
+```
+
+- Grafana
+```
+1. run the server and access to "http://localhost:3000/"
+```
+
 
 ## Trouble shooting
 
-1. gradlew permission problem
+1. Gradlew permission problem
 ```
 if you encountered permission problem, use chmode to change permission of gradlew
 ex) chmod 755 
@@ -79,12 +99,7 @@ ex) chmod 755
 ```
 
 ## Preview
-
-#### UI 
--Flow Chart-
-![flow chart final](https://user-images.githubusercontent.com/37043014/82179398-36bfe800-9919-11ea-823c-0e6969e86cac.png)
-
--UI Image-
+#### Application UI 
 
 |welcome page|login page|register page|
 |-------|------|-------|
@@ -98,8 +113,7 @@ ex) chmod 755
 |-------|------|-------|
 |<img width="265" alt="tutorial begin" src="https://user-images.githubusercontent.com/37043014/82177675-37567f80-9915-11ea-9b25-830ba36beea3.png">|<img width="202" alt="tutorial end" src="https://user-images.githubusercontent.com/37043014/82178544-39b9d900-9917-11ea-8358-496cd2b05adb.png">|<img width="240" alt="weight" src="https://user-images.githubusercontent.com/37043014/82177934-d2e7f000-9915-11ea-8101-75abea6977db.png">|
 
-
--Game View-
+#### Application Game View
 
 <img width="1060" alt="KakaoTalk_20200514_172411733" src="https://user-images.githubusercontent.com/37043014/82179557-93230780-9919-11ea-983f-168a76ce285d.png">
 

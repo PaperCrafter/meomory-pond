@@ -1,0 +1,18 @@
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 1m
+    static_configs:
+#      - targets: ['localhost:9090'] #for linux
+      - targets: ['host.docker.internal:9090'] #for windows
+  - job_name: 'memorypond-web'
+    scrape_interval: 1m
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+#      - targets: ['server:8080'] #for linux
+      - targets: ['host.docker.internal:8080'] #for windows
+  - job_name: 'grafana'
+    scrape_interval: 1m
+    metrics_path: '/metrics'
+    static_configs:
+#      - targets: ['localhost:3000'] #for linux
+      - targets: ['host.docker.internal:3000'] #for windows

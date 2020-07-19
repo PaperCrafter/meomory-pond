@@ -4,9 +4,9 @@ spring:
     suffix: .html
 
 management:
-  server:
-    port: 18081
-    address: 127.0.0.1
+#  server:
+#    port: 18081
+#    address: 127.0.0.1
   endpoints:
     web:
       exposure:
@@ -16,6 +16,8 @@ management:
     health:
       enabled: true
     info:
+      enabled: true
+    prometheus:
       enabled: true
 
 server:

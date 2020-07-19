@@ -33,6 +33,37 @@ services:
     volumes:
       - db-data:/var/lib/mysql
 
+  grafana:
+    image: grafana/grafana:5.4.3
+    ports:
+      - 3000:3000
+    volumes:
+      - ./docker/grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      monitoring:
+        aliases:
+          - grafana
+
+  prometheus:
+    image: prom/prometheus:v2.6.1
+    ports:
+      - 9090:9090
+    command:
+      - '--config.file=/config/prometheus/prometheus.yml'
+    volumes:
+      - ./docker/prometheus/config/prometheus.yml:/config/prometheus/prometheus.yml
+      - ./docker/prometheus:/prometheus
+    networks:
+      monitoring:
+        aliases:
+            - prometheus
+
+networks:
+  monitoring:
+
 # Volumes
 volumes:
   db-data:
