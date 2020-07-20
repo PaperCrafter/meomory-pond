@@ -31,7 +31,8 @@ services:
       MYSQL_USER: memorypond
       MYSQL_PASSWORD: memorypond
     volumes:
-      - db-data:/var/lib/mysql
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/config:/etc/mysql/conf.d
 
   grafana:
     image: grafana/grafana:5.4.3

@@ -1,0 +1,13 @@
+{
+	"ulid": "01EDPEBBQ3H5TB6MQ64NB5PH2C",
+	"minTime": 1595246400000,
+	"maxTime": 1595253600000,
+	"stats": {},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01EDPEBBQ3H5TB6MQ64NB5PH2C"
+		]
+	},
+	"version": 1
+}
